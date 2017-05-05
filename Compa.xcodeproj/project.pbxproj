@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		21E3169D82D16BA4E612E7BD /* Pods_Compa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40171F2D637E7C18C649E60D /* Pods_Compa.framework */; };
+		52999A0B1EB974DC00A36490 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0A1EB974DC00A36490 /* MyPageViewController.swift */; };
+		52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */; };
+		52999A0F1EB988DF00A36490 /* CalcResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */; };
+		52999A111EB9BAD500A36490 /* MyUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A101EB9BAD500A36490 /* MyUtil.swift */; };
+		52999A131EB9C71700A36490 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A121EB9C71700A36490 /* DatabaseController.swift */; };
+		52999A151EB9CE5300A36490 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A141EB9CE5300A36490 /* FriendsTableViewController.swift */; };
+		52999A191EB9D66A00A36490 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A181EB9D66A00A36490 /* LoginViewController.swift */; };
+		529D22CE1EBB216E004F9216 /* sample.csv in Resources */ = {isa = PBXBuildFile; fileRef = 529D22CD1EBB216E004F9216 /* sample.csv */; };
+		529D22D41EBB2F9E004F9216 /* ZodiacEuroMatch.csv in Resources */ = {isa = PBXBuildFile; fileRef = 529D22D31EBB2F9E004F9216 /* ZodiacEuroMatch.csv */; };
 		52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */; };
 		52D6FBB91EA9A02F0088C6AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBB81EA9A02F0088C6AA /* ViewController.swift */; };
 		52D6FBBC1EA9A02F0088C6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D6FBBA1EA9A02F0088C6AA /* Main.storyboard */; };
@@ -15,6 +25,9 @@
 		52D6FBC41EA9A02F0088C6AA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D6FBC21EA9A02F0088C6AA /* LaunchScreen.storyboard */; };
 		52D6FBCF1EA9A02F0088C6AA /* CompaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBCE1EA9A02F0088C6AA /* CompaTests.swift */; };
 		52D6FBDA1EA9A02F0088C6AA /* CompaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBD91EA9A02F0088C6AA /* CompaUITests.swift */; };
+		52D6FBEA1EA9A1A40088C6AA /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBE91EA9A1A40088C6AA /* Zodiac.swift */; };
+		5EC876F476B2EC8161C07E1E /* Pods_CompaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EB48DCDED7853D38F4F34B /* Pods_CompaUITests.framework */; };
+		7C15CAA54FEE44D7967A4D72 /* Pods_CompaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B836D64273D89CB7778B6FF8 /* Pods_CompaTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +48,19 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1AFC8F41BE0EDE0D23D0465C /* Pods-Compa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Compa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Compa/Pods-Compa.release.xcconfig"; sourceTree = "<group>"; };
+		40171F2D637E7C18C649E60D /* Pods_Compa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Compa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		51D3A31361119E697F95D9FC /* Pods-CompaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompaUITests/Pods-CompaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		52999A0A1EB974DC00A36490 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcCompabilityUIButton.swift; sourceTree = "<group>"; };
+		52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcResultViewController.swift; sourceTree = "<group>"; };
+		52999A101EB9BAD500A36490 /* MyUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtil.swift; sourceTree = "<group>"; };
+		52999A121EB9C71700A36490 /* DatabaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
+		52999A141EB9CE5300A36490 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		52999A181EB9D66A00A36490 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		529D22CC1EBAFEE0004F9216 /* Compa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Compa.entitlements; sourceTree = "<group>"; };
+		529D22CD1EBB216E004F9216 /* sample.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample.csv; sourceTree = "<group>"; };
+		529D22D31EBB2F9E004F9216 /* ZodiacEuroMatch.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZodiacEuroMatch.csv; sourceTree = "<group>"; };
 		52D6FBB31EA9A02F0088C6AA /* Compa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Compa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D6FBB81EA9A02F0088C6AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +75,13 @@
 		52D6FBD51EA9A02F0088C6AA /* CompaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CompaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6FBD91EA9A02F0088C6AA /* CompaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaUITests.swift; sourceTree = "<group>"; };
 		52D6FBDB1EA9A02F0088C6AA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D6FBE91EA9A1A40088C6AA /* Zodiac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
+		5DCDA6033BA2CBF89F2C0FCA /* Pods-CompaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompaTests/Pods-CompaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B480FF6364A9D0CBAA6E44D0 /* Pods-CompaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompaTests/Pods-CompaTests.release.xcconfig"; sourceTree = "<group>"; };
+		B836D64273D89CB7778B6FF8 /* Pods_CompaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8E0DEE61A03785D606D933E /* Pods-CompaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompaUITests/Pods-CompaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		D2EB48DCDED7853D38F4F34B /* Pods_CompaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ED41388231BE77CCC23BDB70 /* Pods-Compa.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Compa.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Compa/Pods-Compa.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21E3169D82D16BA4E612E7BD /* Pods_Compa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C15CAA54FEE44D7967A4D72 /* Pods_CompaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +105,56 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC876F476B2EC8161C07E1E /* Pods_CompaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		529D22CF1EBB2479004F9216 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				52D6FBBA1EA9A02F0088C6AA /* Main.storyboard */,
+				52D6FBC21EA9A02F0088C6AA /* LaunchScreen.storyboard */,
+				52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		529D22D01EBB248F004F9216 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				52D6FBB81EA9A02F0088C6AA /* ViewController.swift */,
+				52999A0A1EB974DC00A36490 /* MyPageViewController.swift */,
+				52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */,
+				52999A181EB9D66A00A36490 /* LoginViewController.swift */,
+				52999A141EB9CE5300A36490 /* FriendsTableViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		529D22D11EBB24BE004F9216 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				52D6FBE91EA9A1A40088C6AA /* Zodiac.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		529D22D21EBB24E1004F9216 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				52D6FBC51EA9A02F0088C6AA /* Info.plist */,
+				52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */,
+				52999A121EB9C71700A36490 /* DatabaseController.swift */,
+				52999A101EB9BAD500A36490 /* MyUtil.swift */,
+				529D22CD1EBB216E004F9216 /* sample.csv */,
+				529D22D31EBB2F9E004F9216 /* ZodiacEuroMatch.csv */,
+			);
+			name = "Support Files";
+			sourceTree = "<group>";
+		};
 		52D6FBAA1EA9A02F0088C6AA = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +162,8 @@
 				52D6FBCD1EA9A02F0088C6AA /* CompaTests */,
 				52D6FBD81EA9A02F0088C6AA /* CompaUITests */,
 				52D6FBB41EA9A02F0088C6AA /* Products */,
+				6881BD67075E85B4784E2B70 /* Pods */,
+				EEF7D780B2432860A49BFC8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,12 +180,12 @@
 		52D6FBB51EA9A02F0088C6AA /* Compa */ = {
 			isa = PBXGroup;
 			children = (
-				52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */,
-				52D6FBB81EA9A02F0088C6AA /* ViewController.swift */,
-				52D6FBBA1EA9A02F0088C6AA /* Main.storyboard */,
+				529D22D21EBB24E1004F9216 /* Support Files */,
+				529D22D01EBB248F004F9216 /* Controllers */,
+				529D22CF1EBB2479004F9216 /* UI */,
+				529D22D11EBB24BE004F9216 /* Models */,
+				529D22CC1EBAFEE0004F9216 /* Compa.entitlements */,
 				52D6FBC01EA9A02F0088C6AA /* Assets.xcassets */,
-				52D6FBC21EA9A02F0088C6AA /* LaunchScreen.storyboard */,
-				52D6FBC51EA9A02F0088C6AA /* Info.plist */,
 				52D6FBBD1EA9A02F0088C6AA /* Compa.xcdatamodeld */,
 			);
 			path = Compa;
@@ -128,6 +209,29 @@
 			path = CompaUITests;
 			sourceTree = "<group>";
 		};
+		6881BD67075E85B4784E2B70 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED41388231BE77CCC23BDB70 /* Pods-Compa.debug.xcconfig */,
+				1AFC8F41BE0EDE0D23D0465C /* Pods-Compa.release.xcconfig */,
+				5DCDA6033BA2CBF89F2C0FCA /* Pods-CompaTests.debug.xcconfig */,
+				B480FF6364A9D0CBAA6E44D0 /* Pods-CompaTests.release.xcconfig */,
+				C8E0DEE61A03785D606D933E /* Pods-CompaUITests.debug.xcconfig */,
+				51D3A31361119E697F95D9FC /* Pods-CompaUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EEF7D780B2432860A49BFC8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40171F2D637E7C18C649E60D /* Pods_Compa.framework */,
+				B836D64273D89CB7778B6FF8 /* Pods_CompaTests.framework */,
+				D2EB48DCDED7853D38F4F34B /* Pods_CompaUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D6FBDE1EA9A02F0088C6AA /* Build configuration list for PBXNativeTarget "Compa" */;
 			buildPhases = (
+				5ECA9F9F2C9FAF26767F2422 /* [CP] Check Pods Manifest.lock */,
 				52D6FBAF1EA9A02F0088C6AA /* Sources */,
 				52D6FBB01EA9A02F0088C6AA /* Frameworks */,
 				52D6FBB11EA9A02F0088C6AA /* Resources */,
+				3F0DA0DBE79C59AFF28DFA8C /* [CP] Embed Pods Frameworks */,
+				097B91025B0824BF402F0877 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,9 +259,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D6FBE11EA9A02F0088C6AA /* Build configuration list for PBXNativeTarget "CompaTests" */;
 			buildPhases = (
+				DBCA43BD8A96176C2C3EB61F /* [CP] Check Pods Manifest.lock */,
 				52D6FBC61EA9A02F0088C6AA /* Sources */,
 				52D6FBC71EA9A02F0088C6AA /* Frameworks */,
 				52D6FBC81EA9A02F0088C6AA /* Resources */,
+				6ED74D1B660EF06AD63A29FD /* [CP] Embed Pods Frameworks */,
+				C61506DE2C11605BA65A96E1 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -170,9 +280,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52D6FBE41EA9A02F0088C6AA /* Build configuration list for PBXNativeTarget "CompaUITests" */;
 			buildPhases = (
+				F8C96261092475C649BEF138 /* [CP] Check Pods Manifest.lock */,
 				52D6FBD11EA9A02F0088C6AA /* Sources */,
 				52D6FBD21EA9A02F0088C6AA /* Frameworks */,
 				52D6FBD31EA9A02F0088C6AA /* Resources */,
+				56436D6752E03B25A60DF441 /* [CP] Embed Pods Frameworks */,
+				FCD84320370392BCE31F3C0B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,7 +309,13 @@
 				TargetAttributes = {
 					52D6FBB21EA9A02F0088C6AA = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = HA4E5T3WBX;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 					52D6FBC91EA9A02F0088C6AA = {
 						CreatedOnToolsVersion = 8.3.2;
@@ -235,8 +354,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529D22D41EBB2F9E004F9216 /* ZodiacEuroMatch.csv in Resources */,
 				52D6FBC41EA9A02F0088C6AA /* LaunchScreen.storyboard in Resources */,
 				52D6FBC11EA9A02F0088C6AA /* Assets.xcassets in Resources */,
+				529D22CE1EBB216E004F9216 /* sample.csv in Resources */,
 				52D6FBBC1EA9A02F0088C6AA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -257,13 +378,159 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		097B91025B0824BF402F0877 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Compa/Pods-Compa-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3F0DA0DBE79C59AFF28DFA8C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Compa/Pods-Compa-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		56436D6752E03B25A60DF441 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CompaUITests/Pods-CompaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5ECA9F9F2C9FAF26767F2422 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		6ED74D1B660EF06AD63A29FD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CompaTests/Pods-CompaTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C61506DE2C11605BA65A96E1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CompaTests/Pods-CompaTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBCA43BD8A96176C2C3EB61F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		F8C96261092475C649BEF138 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		FCD84320370392BCE31F3C0B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CompaUITests/Pods-CompaUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		52D6FBAF1EA9A02F0088C6AA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52999A191EB9D66A00A36490 /* LoginViewController.swift in Sources */,
+				52999A131EB9C71700A36490 /* DatabaseController.swift in Sources */,
+				52999A111EB9BAD500A36490 /* MyUtil.swift in Sources */,
+				52999A0B1EB974DC00A36490 /* MyPageViewController.swift in Sources */,
+				52999A0F1EB988DF00A36490 /* CalcResultViewController.swift in Sources */,
+				52999A151EB9CE5300A36490 /* FriendsTableViewController.swift in Sources */,
+				52D6FBEA1EA9A1A40088C6AA /* Zodiac.swift in Sources */,
 				52D6FBB91EA9A02F0088C6AA /* ViewController.swift in Sources */,
 				52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */,
+				52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */,
 				52D6FBBF1EA9A02F0088C6AA /* Compa.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,8 +683,11 @@
 		};
 		52D6FBDF1EA9A02F0088C6AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ED41388231BE77CCC23BDB70 /* Pods-Compa.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Compa/Compa.entitlements;
+				DEVELOPMENT_TEAM = HA4E5T3WBX;
 				INFOPLIST_FILE = Compa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyberworks.Compa;
@@ -428,8 +698,11 @@
 		};
 		52D6FBE01EA9A02F0088C6AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AFC8F41BE0EDE0D23D0465C /* Pods-Compa.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Compa/Compa.entitlements;
+				DEVELOPMENT_TEAM = HA4E5T3WBX;
 				INFOPLIST_FILE = Compa/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cyberworks.Compa;
@@ -440,6 +713,7 @@
 		};
 		52D6FBE21EA9A02F0088C6AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5DCDA6033BA2CBF89F2C0FCA /* Pods-CompaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -454,6 +728,7 @@
 		};
 		52D6FBE31EA9A02F0088C6AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B480FF6364A9D0CBAA6E44D0 /* Pods-CompaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -468,6 +743,7 @@
 		};
 		52D6FBE51EA9A02F0088C6AA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8E0DEE61A03785D606D933E /* Pods-CompaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CompaUITests/Info.plist;
@@ -481,6 +757,7 @@
 		};
 		52D6FBE61EA9A02F0088C6AA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 51D3A31361119E697F95D9FC /* Pods-CompaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = CompaUITests/Info.plist;
@@ -511,6 +788,7 @@
 				52D6FBE01EA9A02F0088C6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52D6FBE11EA9A02F0088C6AA /* Build configuration list for PBXNativeTarget "CompaTests" */ = {
 			isa = XCConfigurationList;
@@ -519,6 +797,7 @@
 				52D6FBE31EA9A02F0088C6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		52D6FBE41EA9A02F0088C6AA /* Build configuration list for PBXNativeTarget "CompaUITests" */ = {
 			isa = XCConfigurationList;
@@ -527,6 +806,7 @@
 				52D6FBE61EA9A02F0088C6AA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
