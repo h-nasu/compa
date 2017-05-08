@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		21E3169D82D16BA4E612E7BD /* Pods_Compa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40171F2D637E7C18C649E60D /* Pods_Compa.framework */; };
+		52336E3F1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv in Resources */ = {isa = PBXBuildFile; fileRef = 52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */; };
 		52999A0B1EB974DC00A36490 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0A1EB974DC00A36490 /* MyPageViewController.swift */; };
 		52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */; };
 		52999A0F1EB988DF00A36490 /* CalcResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */; };
@@ -51,6 +52,7 @@
 		1AFC8F41BE0EDE0D23D0465C /* Pods-Compa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Compa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Compa/Pods-Compa.release.xcconfig"; sourceTree = "<group>"; };
 		40171F2D637E7C18C649E60D /* Pods_Compa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Compa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D3A31361119E697F95D9FC /* Pods-CompaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompaUITests/Pods-CompaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZodiacChinaMatch.csv; sourceTree = "<group>"; };
 		52999A0A1EB974DC00A36490 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcCompabilityUIButton.swift; sourceTree = "<group>"; };
 		52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcResultViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 				52999A121EB9C71700A36490 /* DatabaseController.swift */,
 				52999A101EB9BAD500A36490 /* MyUtil.swift */,
 				529D22CD1EBB216E004F9216 /* sample.csv */,
+				52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */,
 				529D22D31EBB2F9E004F9216 /* ZodiacEuroMatch.csv */,
 			);
 			name = "Support Files";
@@ -354,6 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52336E3F1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv in Resources */,
 				529D22D41EBB2F9E004F9216 /* ZodiacEuroMatch.csv in Resources */,
 				52D6FBC41EA9A02F0088C6AA /* LaunchScreen.storyboard in Resources */,
 				52D6FBC11EA9A02F0088C6AA /* Assets.xcassets in Resources */,

@@ -19,6 +19,10 @@ class CalcResultViewController: UIViewController {
     @IBOutlet weak var myEuroZodiacLabel: UILabel!
     @IBOutlet weak var friendEuroZodiacLabel: UILabel!
     @IBOutlet weak var euroZodiacCompLabel: UILabel!
+    @IBOutlet weak var myChinaZodiacLabel: UILabel!
+    @IBOutlet weak var friendChinaZodiacLabel: UILabel!
+    @IBOutlet weak var chinaZodiacCompLabel: UILabel!
+    @IBOutlet weak var averageCompLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +34,15 @@ class CalcResultViewController: UIViewController {
         
         myEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(myBirthday)
         friendEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(friendBirthday)
-        euroZodiacCompLabel.text = String(Zodiac.getZodiacEuroPercent(myEuroZodiacLabel.text!, friendEuroZodiacLabel.text!))
+        let zodiacEuroComp = Zodiac.getZodiacEuroPercent(myEuroZodiacLabel.text!, friendEuroZodiacLabel.text!)
+        euroZodiacCompLabel.text = " " + String(zodiacEuroComp) + "%"
+        
+        myChinaZodiacLabel.text = Zodiac.getZodiacChinaSign(myBirthday)
+        friendChinaZodiacLabel.text = Zodiac.getZodiacChinaSign(friendBirthday)
+        let zodiacChinaComp = Zodiac.getZodiacChinaPercent(myChinaZodiacLabel.text!, friendChinaZodiacLabel.text!)
+        chinaZodiacCompLabel.text = " " + String(zodiacChinaComp) + "%"
+        
+        averageCompLabel.text =  " " + String((zodiacEuroComp + zodiacChinaComp) / 2) + "%"
         
     }
 

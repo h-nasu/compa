@@ -39,6 +39,12 @@ class MyUtil {
         components.second = 0
         return gregorian.date(from: components)! as NSDate
     }
+    
+    class func getYearFromNSDate(_ nsDate: NSDate) -> Int {
+        let gregorian = Calendar(identifier: .gregorian)
+        let components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: nsDate as Date)
+        return components.year!
+    }
 }
 
 

@@ -13,10 +13,14 @@ class Zodiac {
     
     init(){}
     
+    //Mark: Initialize Data
+    
     class func initData() {
         
         self.initZodiacEuro()
         self.initZodiacEuroMatch()
+        self.initZodiacChina()
+        self.initZodiacChinaMatch()
         
     }
     
@@ -144,12 +148,124 @@ class Zodiac {
         }
     }
     
+    // initialize Zodiac China Table
+    class func initZodiacChina() {
+        if (DatabaseController.totalCount("ZodiacChina") < 1) {
+            DatabaseController.deleteAll("ZodiacChina")
+            
+            let zodiacChinaArray:[[String:Any]] = [
+                [
+                    "name": "Rat",
+                    "number": 4
+                ],
+                [
+                    "name": "Ox",
+                    "number": 5
+                ],
+                [
+                    "name": "Tiger",
+                    "number": 6
+                ],
+                [
+                    "name": "Rabbit",
+                    "number": 7
+                ],
+                [
+                    "name": "Dragon",
+                    "number": 8
+                ],
+                [
+                    "name": "Snake",
+                    "number": 9
+                ],
+                [
+                    "name": "Horse",
+                    "number": 10
+                ],
+                [
+                    "name": "Goat",
+                    "number": 11
+                ],
+                [
+                    "name": "Monkey",
+                    "number": 0
+                ],
+                [
+                    "name": "Rooster",
+                    "number": 1
+                ],
+                [
+                    "name": "Dog",
+                    "number": 2
+                ],
+                [
+                    "name": "Pig",
+                    "number": 3
+                ]
+            ]
+            
+            for obj in zodiacChinaArray {
+                let zodiacChina:ZodiacChina = NSEntityDescription.insertNewObject(forEntityName: "ZodiacChina", into: DatabaseController.getContext()) as! ZodiacChina
+                zodiacChina.name = obj["name"] as? String
+                zodiacChina.number = Int16(obj["number"] as! Int)
+                
+                DatabaseController.saveContext()
+            }
+        }
+    }
+    
+    // Initialize Zodiac China Match
+    class func initZodiacChinaMatch() {
+        if (DatabaseController.totalCount("ZodiacChinaMatch") < 1) {
+            
+            DatabaseController.deleteAll("ZodiacChinaMatch")
+            
+            let zArray = [
+                "Rat",
+                "Ox",
+                "Tiger",
+                "Rabbit",
+                "Dragon",
+                "Snake",
+                "Horse",
+                "Goat",
+                "Monkey",
+                "Rooster",
+                "Dog",
+                "Pig"
+            ]
+            
+            var zodiacChinaMatchCSV = Array<Dictionary<String, String>>()
+            CSVScanner.runFunctionOnRowsFromFile(theColumnNames: zArray, withFileName: "ZodiacChinaMatch", withFunction: {
+                (aRow:Dictionary<String, String>) in
+                zodiacChinaMatchCSV.append(aRow)
+            })
+            zodiacChinaMatchCSV.remove(at: 0)
+            
+            
+            for index in 0 ..< zArray.count {
+                for index2 in 0 ..< zodiacChinaMatchCSV[index].count {
+                    let zodiacChinaMatch:ZodiacChinaMatch = NSEntityDescription.insertNewObject(forEntityName: "ZodiacChinaMatch", into: DatabaseController.getContext()) as! ZodiacChinaMatch
+                    zodiacChinaMatch.myZodiac = zArray[index]
+                    zodiacChinaMatch.friendZodiac = zArray[index2]
+                    zodiacChinaMatch.percent = Int16(zodiacChinaMatchCSV[index][zArray[index2]]!)!
+                    
+                    DatabaseController.saveContext()
+                }
+            }
+            
+        }
+    }
+    
+    
+    //Mark: Class Functions
+    
     class func calcZodiacEuro(_ resNumber: Int16) -> Int16 {
-        let lowest:Double = 45
+        let lowest:Double = 40
         let highest:Double = 95
         let totalScore:Double = highest - lowest
         let myScore:Double = Double(resNumber) - lowest
-        let result:Double = (myScore / totalScore) * 100
+        let result:Double = round(myScore / totalScore * 10) * 10
         return Int16(result)
     }
     
@@ -166,5 +282,19 @@ class Zodiac {
         
         return self.calcZodiacEuro(resultNSObj.value(forKey: "percent") as! Int16)
         
+    }
+    
+    class func getZodiacChinaSign(_ nsDate: NSDate) -> String {
+        let myYear: Double = Double(MyUtil.getYearFromNSDate(nsDate))
+        let bufYear: Double = floor(myYear / 12)
+        let zodiacChinaNum: Double = myYear - (bufYear * 12)
+        let nsObj = DatabaseController.getSingleData("ZodiacChina", NSPredicate(format: "number == %d", Int16(zodiacChinaNum)))!
+        return nsObj.value(forKey: "name") as! String
+    }
+    
+    class func getZodiacChinaPercent(_ myZodiac: String, _ friendZodiac: String) -> Int16 {
+        // Get Compability Percent
+        let resultNSObj = DatabaseController.getSingleData("ZodiacChinaMatch", NSPredicate(format: "(myZodiac == %@) AND (friendZodiac == %@)", myZodiac, friendZodiac))!
+        return resultNSObj.value(forKey: "percent") as! Int16
     }
 }

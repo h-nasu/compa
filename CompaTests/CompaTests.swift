@@ -110,7 +110,7 @@ class CompaTests: XCTestCase {
         
     }
     
-    func testZodiacPercentCalcIsCorrect() {
+    func testZodiacEuroPercentCalcIsCorrect() {
         var result: NSManagedObject?
         var myZodiac: String
         var friendZodiac: String
@@ -119,15 +119,20 @@ class CompaTests: XCTestCase {
         friendZodiac = "Aries"
         result = DatabaseController.getSingleData("ZodiacEuroMatch", NSPredicate(format: "(myZodiac == %@) AND (friendZodiac == %@)", myZodiac, friendZodiac))!
         
-        XCTAssertEqual(Zodiac.calcZodiacEuro(result?.value(forKey: "percent") as! Int16), 30)
+        XCTAssertEqual(Zodiac.calcZodiacEuro(result?.value(forKey: "percent") as! Int16), 40)
         
         myZodiac = "Libra"
         friendZodiac = "Sagittarius"
         result = DatabaseController.getSingleData("ZodiacEuroMatch", NSPredicate(format: "(myZodiac == %@) AND (friendZodiac == %@)", myZodiac, friendZodiac))!
         XCTAssertEqual(Zodiac.calcZodiacEuro(result?.value(forKey: "percent") as! Int16), 70)
+        
+        myZodiac = "Aries"
+        friendZodiac = "Virgo"
+        result = DatabaseController.getSingleData("ZodiacEuroMatch", NSPredicate(format: "(myZodiac == %@) AND (friendZodiac == %@)", myZodiac, friendZodiac))!
+        XCTAssertEqual(Zodiac.calcZodiacEuro(result?.value(forKey: "percent") as! Int16), 10)
     }
     
-    func testCanGetCorrectCompability() {
+    func testCanGetCorrectZodiacEuroCompability() {
         
         var myBirthday = MyUtil.nsDateFormat("1982-10-06")
         var friendBirthday = MyUtil.nsDateFormat("1988-12-04")
@@ -141,14 +146,14 @@ class CompaTests: XCTestCase {
         myZodiac = Zodiac.getZodiacEuroSign(myBirthday)
         friendZodiac = Zodiac.getZodiacEuroSign(friendBirthday)
         result = Zodiac.getZodiacEuroPercent(myZodiac, friendZodiac)
-        XCTAssertEqual(result, 10)
+        XCTAssertEqual(result, 20)
         
         myBirthday = MyUtil.nsDateFormat("1982-04-01")
         friendBirthday = MyUtil.nsDateFormat("1988-01-20")
         myZodiac = Zodiac.getZodiacEuroSign(myBirthday)
         friendZodiac = Zodiac.getZodiacEuroSign(friendBirthday)
         result = Zodiac.getZodiacEuroPercent(myZodiac, friendZodiac)
-        XCTAssertEqual(result, 20)
+        XCTAssertEqual(result, 30)
     }
     
     func testNSDate() {
@@ -168,5 +173,83 @@ class CompaTests: XCTestCase {
         
 
     }
+    
+    func testCalcZodiacChina() {
+        // Rat 4
+        // Monkey 0
+        // Dog 2
+        let myYear: Double = 1936
+        let bufYear: Double = floor(myYear / 12)
+        let zodiacChinaNum: Double = myYear - (bufYear * 12)
+        XCTAssertEqual(zodiacChinaNum, 4)
+
+    
+    }
+    
+    func testZodiacChinaCanInitialize() {
+        DatabaseController.deleteAll("ZodiacChina")
+        Zodiac.initZodiacChina()
+        XCTAssertEqual(DatabaseController.totalCount("ZodiacChina"), 12)
+    }
+    
+    func testZodiacChinaMatchCanInitialize() {
+        DatabaseController.deleteAll("ZodiacChinaMatch")
+        Zodiac.initZodiacChinaMatch()
+        XCTAssertEqual(DatabaseController.totalCount("ZodiacChinaMatch"), 144)
+    }
+    
+    func testZodiacChinaHaveCorrectData() {
+        var zodiacChinaNum = 0
+        var result = DatabaseController.getSingleData("ZodiacChina", NSPredicate(format: "number == %d", zodiacChinaNum))!
+        XCTAssertEqual(result.value(forKey: "name") as! String, "Monkey")
+        
+        zodiacChinaNum = 11
+        result = DatabaseController.getSingleData("ZodiacChina", NSPredicate(format: "number == %d", zodiacChinaNum))!
+        XCTAssertEqual(result.value(forKey: "name") as! String, "Goat")
+ 
+    }
+    
+    func testZodiacChinaMatchHaveCorrectData() {
+        var result: NSManagedObject?
+        var myZodiac: String
+        var friendZodiac: String
+        
+        myZodiac = "Rat"
+        friendZodiac = "Rat"
+        result = DatabaseController.getSingleData("ZodiacChinaMatch", NSPredicate(format: "(myZodiac == %@) AND (friendZodiac == %@)", myZodiac, friendZodiac))!
+        XCTAssertEqual(result?.value(forKey: "percent") as! Int16, 90)
+        
+        myZodiac = "Dog"
+        friendZodiac = "Dragon"
+        result = DatabaseController.getSingleData("ZodiacChinaMatch", NSPredicate(format: "(myZodiac == %@) AND (friendZodiac == %@)", myZodiac, friendZodiac))!
+        XCTAssertEqual(result?.value(forKey: "percent") as! Int16, 20)
+    }
+    
+    func testCanGetCorrectZodiacChinaCompability() {
+        
+        var myBirthday = MyUtil.nsDateFormat("1982-10-06")
+        var friendBirthday = MyUtil.nsDateFormat("1988-12-04")
+        var myZodiac = Zodiac.getZodiacChinaSign(myBirthday)
+        var friendZodiac = Zodiac.getZodiacChinaSign(friendBirthday)
+        var result = Zodiac.getZodiacChinaPercent(myZodiac, friendZodiac)
+        XCTAssertEqual(result, 20)
+        
+        myBirthday = MyUtil.nsDateFormat("1982-10-06")
+        friendBirthday = MyUtil.nsDateFormat("1980-12-04")
+        myZodiac = Zodiac.getZodiacChinaSign(myBirthday)
+        friendZodiac = Zodiac.getZodiacChinaSign(friendBirthday)
+        result = Zodiac.getZodiacChinaPercent(myZodiac, friendZodiac)
+        XCTAssertEqual(result, 80)
+        
+        myBirthday = MyUtil.nsDateFormat("1936-10-06")
+        friendBirthday = MyUtil.nsDateFormat("1980-12-04")
+        myZodiac = Zodiac.getZodiacChinaSign(myBirthday)
+        friendZodiac = Zodiac.getZodiacChinaSign(friendBirthday)
+        result = Zodiac.getZodiacChinaPercent(myZodiac, friendZodiac)
+        XCTAssertEqual(result, 100)
+    }
+    
+
+
     
 }
