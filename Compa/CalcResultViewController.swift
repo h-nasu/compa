@@ -10,9 +10,10 @@ import UIKit
 
 class CalcResultViewController: UIViewController {
 
-    //Mark: Properties
+    //MARK: Properties
     var myBirthday: NSDate!
     var friendBirthday: NSDate!
+    var friend: Friend!
     
     @IBOutlet weak var myBirthdayLabel: UILabel!
     @IBOutlet weak var friendBirthdayLabel: UILabel!
@@ -28,6 +29,13 @@ class CalcResultViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Check if from Friends List
+        if friend != nil {
+            // for test
+            myBirthday = MyUtil.nsDateFormat("1982-10-06")
+            friendBirthday = friend.nsBirthday
+        }
         
         myBirthdayLabel.text = MyUtil.stringDateFormat(myBirthday)
         friendBirthdayLabel.text = MyUtil.stringDateFormat(friendBirthday)

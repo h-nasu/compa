@@ -10,7 +10,7 @@ import UIKit
 
 class MyPageViewController: UIViewController {
 
-    //Mark: Properties
+    //MARK: Properties
     @IBOutlet weak var myBirthday: UIDatePicker!
     @IBOutlet weak var friendBirthday: UIDatePicker!
     

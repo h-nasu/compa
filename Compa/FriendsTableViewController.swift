@@ -9,6 +9,9 @@
 import UIKit
 
 class FriendsTableViewController: UITableViewController {
+    
+    //MARK: Properties
+    var friends = [Friend]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +20,8 @@ class FriendsTableViewController: UITableViewController {
         //self.navigationItem.setHidesBackButton(true, animated:true);
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
+        
+        self.loadSampleFriends()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -33,24 +38,25 @@ class FriendsTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return friends.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else {
+            fatalError("Dequed cell failed")
+        }
+        let friend = friends[indexPath.row]
+        cell.friendName.text = friend.name
+        cell.friendImage.image = friend.photo
+        cell.friendBirthday.text = friend.birthday
 
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -87,14 +93,44 @@ class FriendsTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+        case "ShowCompaFriendList":
+            guard let calcResultVC = segue.destination as? CalcResultViewController else {
+                fatalError("Unexpected destination: \(segue.destination)")
+            }
+            guard let selectedFriendCell = sender as? FriendTableViewCell else {
+                fatalError("Unexpected sender: \(sender)")
+            }
+            guard let indexPath = tableView.indexPath(for: selectedFriendCell) else {
+                fatalError("The selected cell is not being displayed by the table")
+            }
+            calcResultVC.friend = friends[indexPath.row]
+        default:
+            break
+        }
+        
     }
-    */
+    
+    //MARK: Private Methods
+    
+    private func loadSampleFriends() {
+        let testImage = UIImage(named: "defaultPhoto")
+        guard let friend1 = Friend(name: "Fafa", photo: testImage, nsBirthday: MyUtil.nsDateFormat("1982-10-06"), birthday: "1982-10-06") else {
+            fatalError("something happened to friend1")
+        }
+        guard let friend2 = Friend(name: "Gege", photo: testImage, nsBirthday: MyUtil.nsDateFormat("1988-12-04"), birthday: "1988-12-04") else {
+            fatalError("something happened to friend2")
+        }
+        guard let friend3 = Friend(name: "Lolo", photo: testImage, nsBirthday: MyUtil.nsDateFormat("1981-09-17"), birthday: "1981-09-17") else {
+            fatalError("something happened to friend3")
+        }
+        friends += [friend1, friend2, friend3]
+    }
 
 }

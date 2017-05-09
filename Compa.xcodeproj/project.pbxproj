@@ -8,7 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		21E3169D82D16BA4E612E7BD /* Pods_Compa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40171F2D637E7C18C649E60D /* Pods_Compa.framework */; };
+		521A8B891EC1B68B00A589A1 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A8B881EC1B68B00A589A1 /* FriendTableViewCell.swift */; };
+		521A8B8B1EC1BAAB00A589A1 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A8B8A1EC1BAAB00A589A1 /* UIHelper.swift */; };
+		521A8B8D1EC1DFF200A589A1 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A8B8C1EC1DFF200A589A1 /* MyProfile.swift */; };
 		52336E3F1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv in Resources */ = {isa = PBXBuildFile; fileRef = 52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */; };
+		5266E2CA1EC1ABA000984405 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266E2C91EC1ABA000984405 /* Friend.swift */; };
 		52999A0B1EB974DC00A36490 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0A1EB974DC00A36490 /* MyPageViewController.swift */; };
 		52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */; };
 		52999A0F1EB988DF00A36490 /* CalcResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */; };
@@ -52,7 +56,11 @@
 		1AFC8F41BE0EDE0D23D0465C /* Pods-Compa.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Compa.release.xcconfig"; path = "Pods/Target Support Files/Pods-Compa/Pods-Compa.release.xcconfig"; sourceTree = "<group>"; };
 		40171F2D637E7C18C649E60D /* Pods_Compa.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Compa.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D3A31361119E697F95D9FC /* Pods-CompaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompaUITests/Pods-CompaUITests.release.xcconfig"; sourceTree = "<group>"; };
+		521A8B881EC1B68B00A589A1 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		521A8B8A1EC1BAAB00A589A1 /* UIHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		521A8B8C1EC1DFF200A589A1 /* MyProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZodiacChinaMatch.csv; sourceTree = "<group>"; };
+		5266E2C91EC1ABA000984405 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		52999A0A1EB974DC00A36490 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcCompabilityUIButton.swift; sourceTree = "<group>"; };
 		52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcResultViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +128,8 @@
 				52D6FBBA1EA9A02F0088C6AA /* Main.storyboard */,
 				52D6FBC21EA9A02F0088C6AA /* LaunchScreen.storyboard */,
 				52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */,
+				521A8B881EC1B68B00A589A1 /* FriendTableViewCell.swift */,
+				521A8B8A1EC1BAAB00A589A1 /* UIHelper.swift */,
 			);
 			name = UI;
 			sourceTree = "<group>";
@@ -140,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				52D6FBE91EA9A1A40088C6AA /* Zodiac.swift */,
+				5266E2C91EC1ABA000984405 /* Friend.swift */,
+				521A8B8C1EC1DFF200A589A1 /* MyProfile.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -526,16 +538,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				52999A191EB9D66A00A36490 /* LoginViewController.swift in Sources */,
+				521A8B8D1EC1DFF200A589A1 /* MyProfile.swift in Sources */,
 				52999A131EB9C71700A36490 /* DatabaseController.swift in Sources */,
 				52999A111EB9BAD500A36490 /* MyUtil.swift in Sources */,
+				5266E2CA1EC1ABA000984405 /* Friend.swift in Sources */,
 				52999A0B1EB974DC00A36490 /* MyPageViewController.swift in Sources */,
 				52999A0F1EB988DF00A36490 /* CalcResultViewController.swift in Sources */,
 				52999A151EB9CE5300A36490 /* FriendsTableViewController.swift in Sources */,
+				521A8B891EC1B68B00A589A1 /* FriendTableViewCell.swift in Sources */,
 				52D6FBEA1EA9A1A40088C6AA /* Zodiac.swift in Sources */,
 				52D6FBB91EA9A02F0088C6AA /* ViewController.swift in Sources */,
 				52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */,
 				52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */,
 				52D6FBBF1EA9A02F0088C6AA /* Compa.xcdatamodeld in Sources */,
+				521A8B8B1EC1BAAB00A589A1 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

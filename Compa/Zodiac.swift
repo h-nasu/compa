@@ -13,7 +13,7 @@ class Zodiac {
     
     init(){}
     
-    //Mark: Initialize Data
+    //MARK: Initialize Data
     
     class func initData() {
         
@@ -258,7 +258,7 @@ class Zodiac {
     }
     
     
-    //Mark: Class Functions
+    //MARK: Class Functions
     
     class func calcZodiacEuro(_ resNumber: Int16) -> Int16 {
         let lowest:Double = 40
