@@ -377,8 +377,10 @@
                     </view>
                     <navigationItem key="navigationItem" title="Compability" id="yeQ-gN-1zf"/>
                     <connections>
+                        <outlet property="averageCompDescLabel" destination="Qw5-P8-UUy" id="Znf-lB-sbs"/>
                         <outlet property="averageCompLabel" destination="xoV-hM-0ek" id="f2n-bA-35U"/>
                         <outlet property="chinaZodiacCompLabel" destination="HiP-hQ-Ezp" id="vGK-yn-Ln0"/>
+                        <outlet property="chineseZodiacCompDescLabel" destination="6II-0u-rPF" id="2Z3-cz-ZxK"/>
                         <outlet property="euroZodiacCompLabel" destination="Ck9-wN-dZD" id="27V-LU-PhB"/>
                         <outlet property="friendBirthdayLabel" destination="Hbg-an-aGO" id="fES-SK-dV1"/>
                         <outlet property="friendChinaZodiacLabel" destination="Fbw-Zf-1i7" id="ngH-9u-fVs"/>

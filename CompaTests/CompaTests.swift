@@ -249,6 +249,7 @@ class CompaTests: XCTestCase {
         XCTAssertEqual(result, 100)
     }
     
+    /*
     func testFriendClass() {
         var friend = Friend(name: "Fafa", photo: nil, nsBirthday: MyUtil.nsDateFormat("1982-10-06"), birthday: "1982-10-06")
         XCTAssertEqual(friend?.name, "Fafa")
@@ -256,6 +257,7 @@ class CompaTests: XCTestCase {
         friend = Friend(name: "", photo: nil, nsBirthday: MyUtil.nsDateFormat("1982-10-06"), birthday: "1982-10-06")
         XCTAssertNil(friend)
     }
-
+ */
+    
     
 }

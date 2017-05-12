@@ -45,6 +45,23 @@ class MyUtil {
         let components = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: nsDate as Date)
         return components.year!
     }
+    
+    class func convertFBDatetoDEfaultDate(_ date: String) -> NSDictionary {
+        var dateArr = [String?]()
+        dateArr = date.characters.split(separator: "/").map(String.init)
+        let birthdayStr: String
+        if !dateArr.indices.contains(2) {
+            dateArr.insert("9999", at: 2)
+            birthdayStr = dateArr[0]! + "-" + dateArr[1]!
+        } else {
+            birthdayStr = dateArr[2]! + "-" + dateArr[0]! + "-" + dateArr[1]!
+        }
+        let birthdayNSStr = dateArr[2]! + "-" + dateArr[0]! + "-" + dateArr[1]!
+        //var nsDict = NSDictionary()
+        //nsDict["birthdayStr"] = birthdayStr
+        return ["birthdayStr": birthdayStr, "birthdayNSStr": birthdayNSStr]
+    }
+    
 }
 
 

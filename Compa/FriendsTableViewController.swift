@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import FacebookCore
+
+// TODO Add more User and forever scroll
+// TODO Search Friends
 
 class FriendsTableViewController: UITableViewController {
     
@@ -22,6 +26,66 @@ class FriendsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = backButton
         
         self.loadSampleFriends()
+        
+        let connection = GraphRequestConnection()
+        connection.add(FBGetRequest("/" + MyProfile.sharedInstance.id! + "/friends", nil)) { response, result in
+            switch result {
+            case .success(let response):
+                
+                print("Custom Graph Request Succeeded: \(response)")
+                //print("Check Raw Response Data: \(response.rawResponse)")
+                
+                let respData = response.rawResponse as! NSDictionary
+                let respFriends = respData["data"] as! [NSDictionary]
+                
+                //print("Get Friends List: \(respFriends)")
+                
+                let oldFriendsCount = self.friends.count
+                
+                for respFriend in respFriends {
+                    
+                    if respFriend["birthday"] == nil {
+                        continue
+                    }
+                    
+                    print("Friend: \(respFriend)")
+                    
+                    let id = respFriend["id"] as! String
+                    let name = respFriend["name"] as! String
+                    
+                    let photoData = respFriend["picture"] as! NSDictionary
+                    let photoUrl = photoData["data"] as! NSDictionary
+                    let photo = photoUrl["url"] as! String
+                    
+                    let date = respFriend["birthday"] as! String
+                    
+                    let nsBirthday = MyUtil.convertFBDatetoDEfaultDate(date)
+                    let birthdayStr = nsBirthday["birthdayStr"] as! String
+                    let birthdayNSStr = nsBirthday["birthdayNSStr"] as! String
+                    
+                    guard let friend = Friend(id: id, name: name, photoUrl: photo, nsBirthday: MyUtil.nsDateFormat(birthdayNSStr), birthday: birthdayStr) else {
+                        fatalError("something happened to friend1")
+                    }
+                    self.friends.append(friend)
+                    
+                }
+                
+                if self.friends.count != oldFriendsCount {
+                    let newFriendsCount = self.friends.count - oldFriendsCount
+                    let tableV = self.tableView
+                    tableV?.beginUpdates()
+                    for i in 0 ..< newFriendsCount {
+                        tableV?.insertRows(at: [IndexPath(row: oldFriendsCount+i, section: 0)], with: .automatic)
+                    }
+                    tableV?.endUpdates()
+                }
+   
+            case .failed(let error):
+                print("Custom Graph Request Failed: \(error)")
+            }
+        }
+        connection.start()
+ 
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -51,7 +115,11 @@ class FriendsTableViewController: UITableViewController {
         }
         let friend = friends[indexPath.row]
         cell.friendName.text = friend.name
-        cell.friendImage.image = friend.photo
+        
+        // imageView.downloadedFrom(link: "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
+        //cell.friendImage.image = friend.photo
+        cell.friendImage.downloadedFrom(link: friend.photoUrl!)
+        
         cell.friendBirthday.text = friend.birthday
 
         return cell
@@ -120,14 +188,15 @@ class FriendsTableViewController: UITableViewController {
     //MARK: Private Methods
     
     private func loadSampleFriends() {
-        let testImage = UIImage(named: "defaultPhoto")
-        guard let friend1 = Friend(name: "Fafa", photo: testImage, nsBirthday: MyUtil.nsDateFormat("1982-10-06"), birthday: "1982-10-06") else {
+        //let testImage = UIImage(named: "defaultPhoto")
+        let testImage = "https://scontent.xx.fbcdn.net/v/t1.0-1/c0.9.50.50/p50x50/10171803_10203680803685727_1619338145_n.jpg?oh=69e670f70ecdcf9b8584cf4350266808&oe=59BB72E4"
+        guard let friend1 = Friend(id: "dfaaefa", name: "Fafa", photoUrl: testImage, nsBirthday: MyUtil.nsDateFormat("1982-10-06"), birthday: "1982-10-06") else {
             fatalError("something happened to friend1")
         }
-        guard let friend2 = Friend(name: "Gege", photo: testImage, nsBirthday: MyUtil.nsDateFormat("1988-12-04"), birthday: "1988-12-04") else {
+        guard let friend2 = Friend(id: "dfadfaea", name: "Gege", photoUrl: testImage, nsBirthday: MyUtil.nsDateFormat("1988-12-04"), birthday: "1988-12-04") else {
             fatalError("something happened to friend2")
         }
-        guard let friend3 = Friend(name: "Lolo", photo: testImage, nsBirthday: MyUtil.nsDateFormat("1981-09-17"), birthday: "1981-09-17") else {
+        guard let friend3 = Friend(id: "khjijll", name: "Lolo", photoUrl: testImage, nsBirthday: MyUtil.nsDateFormat("1981-09-17"), birthday: "1981-09-17") else {
             fatalError("something happened to friend3")
         }
         friends += [friend1, friend2, friend3]

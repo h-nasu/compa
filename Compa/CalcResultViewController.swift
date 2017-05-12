@@ -25,20 +25,48 @@ class CalcResultViewController: UIViewController {
     @IBOutlet weak var chinaZodiacCompLabel: UILabel!
     @IBOutlet weak var averageCompLabel: UILabel!
     
+    @IBOutlet weak var averageCompDescLabel: UILabel!
+    @IBOutlet weak var chineseZodiacCompDescLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
+        let myBirthdayStr: String
+        let friendBirthdayStr: String
+        
         // Check if from Friends List
         if friend != nil {
             // for test
-            myBirthday = MyUtil.nsDateFormat("1982-10-06")
+            //myBirthday = MyUtil.nsDateFormat("1982-10-06")
+            myBirthday = MyProfile.sharedInstance.nsBirthday
+            
             friendBirthday = friend.nsBirthday
+            
+            if MyUtil.stringDateFormat(friendBirthday).range(of:"9999") != nil{
+                myChinaZodiacLabel.isHidden = true
+                friendChinaZodiacLabel.isHidden = true
+                chinaZodiacCompLabel.isHidden = true
+                averageCompLabel.isHidden = true
+                
+                averageCompDescLabel.isHidden = true
+                chineseZodiacCompDescLabel.isHidden = true
+                
+                friendBirthdayStr = MyUtil.stringDateFormat(friendBirthday).replacingOccurrences(of: "9999-", with: "", options: .literal, range: nil)
+            } else {
+                friendBirthdayStr = MyUtil.stringDateFormat(friendBirthday)
+            }
+            
+            myBirthdayStr = MyUtil.stringDateFormat(myBirthday)
+        } else {
+            myBirthdayStr = MyUtil.stringDateFormat(myBirthday)
+            friendBirthdayStr = MyUtil.stringDateFormat(friendBirthday)
         }
         
-        myBirthdayLabel.text = MyUtil.stringDateFormat(myBirthday)
-        friendBirthdayLabel.text = MyUtil.stringDateFormat(friendBirthday)
+        myBirthdayLabel.text = myBirthdayStr
+        friendBirthdayLabel.text = friendBirthdayStr
         
         myEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(myBirthday)
         friendEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(friendBirthday)

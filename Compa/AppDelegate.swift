@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-import FBSDKCoreKit
+import FacebookCore
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -50,36 +50,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     // Facebook Login
-/*
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-    }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, open: url as URL!, sourceApplication: sourceApplication, annotation: annotation)
+    // https://github.com/facebook/facebook-sdk-swift/issues/152
+    // import FacebookCore
+    // info.plist
+    // FacebookAppID LSApplicationQueriesSchemes
+    // Pods FBSDKCoreKit
+    // key chain
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
- */
-    
-    /*
-    @available(iOS 9.0, *)
-    public func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        
-        return FBSDKApplicationDelegate.sharedInstance().application(
-            app,
-            open: url as URL!,
-            sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
-            annotation: options[UIApplicationOpenURLOptionsKey.annotation] as Any
-        )
-    }
-    
-    public func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(
-            application,
-            open: url as URL!,
-            sourceApplication: sourceApplication,
-            annotation: annotation)
-    }
- */
+
 
 }
 
