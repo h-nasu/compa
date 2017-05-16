@@ -26,9 +26,6 @@
                                 <rect key="frame" x="178" y="223" width="46" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <connections>
-                                    <segue destination="vif-2h-0aB" kind="show" id="5n6-cb-uIS"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="94"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HTD-vX-AH6" id="1Yf-Cr-UaJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="93.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultPhoto" highlightedImage="defaultPhoto.png" translatesAutoresizingMaskIntoConstraints="NO" id="X5L-wN-p8N">
@@ -93,7 +90,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Egj-f3-vYw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1732" y="411.544227886057"/>
+            <point key="canvasLocation" x="1666" y="523"/>
         </scene>
         <!--My Page-->
         <scene sceneID="VEq-XW-7TM">
@@ -406,7 +403,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WNo-fZ-rlM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2509.5999999999999" y="71.514242878560722"/>
+            <point key="canvasLocation" x="2444" y="183"/>
         </scene>
         <!--My Page-->
         <scene sceneID="HZC-Ep-Ubf">
@@ -456,7 +453,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="vif-2h-0aB" kind="relationship" relationship="rootViewController" id="Hp9-Wt-gd3"/>
+                        <segue destination="vif-2h-0aB" kind="relationship" relationship="rootViewController" id="SSU-JX-N51"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmU-Fp-VNI" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -469,7 +466,6 @@
         <image name="defaultPhoto.png" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WVR-MA-TeL"/>
-        <segue reference="Hp9-Wt-gd3"/>
+        <segue reference="BtT-p8-NC3"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -16,26 +16,40 @@ import FacebookCore
 // if no internet
 
 
-class FriendsTableViewController: UITableViewController {
+class FriendsTableViewController: UITableViewController, UISearchResultsUpdating {
     
     //MARK: Properties
     var friends = [Friend]()
     var nextPage: String?
     var loading = false
+    var friendsFiltered = [Friend]()
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         //self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: false)
         //self.navigationItem.setHidesBackButton(true, animated:true);
+        /*
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
-        
-        //self.loadSampleFriends()
-        
-        //MyUtil.checkLoginAndNavigateToLogin(self)
-        //self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
+ */
+        self.navigationItem.setHidesBackButton(true, animated: false)
  
+        
+        self.searchController.searchResultsUpdater = self as! UISearchResultsUpdating
+        self.searchController.dimsBackgroundDuringPresentation = false
+        //definesPresentationContext = true
+        self.searchController.hidesNavigationBarDuringPresentation = false;
+        
+        self.searchController.searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 20)
+        self.navigationItem.titleView = self.searchController.searchBar
+        
+        /*
+        let leftNavBarButton = UIBarButtonItem(customView: self.searchController.searchBar)
+        self.navigationItem.leftBarButtonItem = leftNavBarButton
+ */
+
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -69,14 +83,25 @@ class FriendsTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return friends.count
+        if searchController.isActive && searchController.searchBar.text != ""{
+            return self.friendsFiltered.count
+        } else {
+            return self.friends.count
+        }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else {
             fatalError("Dequed cell failed")
         }
-        let friend = friends[indexPath.row]
+        
+        var friend: Friend
+        if searchController.isActive && searchController.searchBar.text != "" {
+            friend = friendsFiltered[indexPath.row]
+        } else {
+            friend = friends[indexPath.row]
+        }
+        
         cell.friendName.text = friend.name
         
         // imageView.downloadedFrom(link: "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
@@ -89,15 +114,16 @@ class FriendsTableViewController: UITableViewController {
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if nextPage != nil {
-            let offset = scrollView.contentOffset.y
-            let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
-            let diffOffset = maxOffset - offset
-            if diffOffset <= 0 {
-                self.loadFriends(nextPage!)
+        if !searchController.isActive && searchController.searchBar.text == "" {
+            if nextPage != nil {
+                let offset = scrollView.contentOffset.y
+                let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
+                let diffOffset = maxOffset - offset
+                if diffOffset <= 0 {
+                    self.loadFriends(nextPage!)
+                }
             }
         }
-        
     }
     
 
@@ -135,6 +161,13 @@ class FriendsTableViewController: UITableViewController {
         return true
     }
     */
+    
+    // MARK: Action
+    func updateSearchResults(for searchController: UISearchController) {
+        self.filterContentForSearchText(searchText: searchController.searchBar.text!)
+    }
+    
+    
 
     // MARK: - Navigation
 
@@ -153,7 +186,12 @@ class FriendsTableViewController: UITableViewController {
             guard let indexPath = tableView.indexPath(for: selectedFriendCell) else {
                 fatalError("The selected cell is not being displayed by the table")
             }
-            calcResultVC.friend = friends[indexPath.row]
+            if searchController.isActive && searchController.searchBar.text != "" {
+                calcResultVC.friend = friendsFiltered[indexPath.row]
+            } else {
+                calcResultVC.friend = friends[indexPath.row]
+            }
+            
         default:
             break
         }
@@ -265,5 +303,15 @@ class FriendsTableViewController: UITableViewController {
         }
     
     }
+    
+    private func filterContentForSearchText(searchText: String, scope: String = "All") {
+        friendsFiltered = friends.filter { friend in
+            return friend.name.lowercased().contains(searchText.lowercased())
+        }
+        
+        tableView.reloadData()
+    }
 
 }
+
+
