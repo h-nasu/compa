@@ -15,7 +15,7 @@ struct FBGetRequest: GraphRequestProtocol {
         
         init(rawResponse: Any?) {
             // Decode JSON from rawResponse into other properties here.
-            print(rawResponse)
+            //print(rawResponse)
             self.rawResponse = rawResponse
         }
     }
@@ -30,9 +30,9 @@ struct FBGetRequest: GraphRequestProtocol {
         if path != nil {
             self.graphPath = path!
         }
-        if param != nil {
+        //if param != nil {
             self.parameters = param
-        }
+        //}
         
     }
 }

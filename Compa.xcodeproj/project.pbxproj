@@ -23,6 +23,8 @@
 		52999A191EB9D66A00A36490 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A181EB9D66A00A36490 /* LoginViewController.swift */; };
 		529D22CE1EBB216E004F9216 /* sample.csv in Resources */ = {isa = PBXBuildFile; fileRef = 529D22CD1EBB216E004F9216 /* sample.csv */; };
 		529D22D41EBB2F9E004F9216 /* ZodiacEuroMatch.csv in Resources */ = {isa = PBXBuildFile; fileRef = 529D22D31EBB2F9E004F9216 /* ZodiacEuroMatch.csv */; };
+		52D660FE1EC9945E00F3FB80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D660FD1EC9945E00F3FB80 /* GoogleService-Info.plist */; };
+		52D661001EC9B37B00F3FB80 /* MyTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D660FF1EC9B37B00F3FB80 /* MyTabViewController.swift */; };
 		52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */; };
 		52D6FBB91EA9A02F0088C6AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBB81EA9A02F0088C6AA /* ViewController.swift */; };
 		52D6FBBC1EA9A02F0088C6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D6FBBA1EA9A02F0088C6AA /* Main.storyboard */; };
@@ -73,6 +75,8 @@
 		529D22CC1EBAFEE0004F9216 /* Compa.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Compa.entitlements; sourceTree = "<group>"; };
 		529D22CD1EBB216E004F9216 /* sample.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sample.csv; sourceTree = "<group>"; };
 		529D22D31EBB2F9E004F9216 /* ZodiacEuroMatch.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZodiacEuroMatch.csv; sourceTree = "<group>"; };
+		52D660FD1EC9945E00F3FB80 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		52D660FF1EC9B37B00F3FB80 /* MyTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabViewController.swift; sourceTree = "<group>"; };
 		52D6FBB31EA9A02F0088C6AA /* Compa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Compa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52D6FBB81EA9A02F0088C6AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				52D6FBB81EA9A02F0088C6AA /* ViewController.swift */,
+				52D660FF1EC9B37B00F3FB80 /* MyTabViewController.swift */,
 				52999A0A1EB974DC00A36490 /* MyPageViewController.swift */,
 				52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */,
 				52999A181EB9D66A00A36490 /* LoginViewController.swift */,
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				52D6FBC51EA9A02F0088C6AA /* Info.plist */,
+				52D660FD1EC9945E00F3FB80 /* GoogleService-Info.plist */,
 				52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */,
 				52999A121EB9C71700A36490 /* DatabaseController.swift */,
 				52999A101EB9BAD500A36490 /* MyUtil.swift */,
@@ -378,6 +384,7 @@
 				52D6FBC11EA9A02F0088C6AA /* Assets.xcassets in Resources */,
 				529D22CE1EBB216E004F9216 /* sample.csv in Resources */,
 				52D6FBBC1EA9A02F0088C6AA /* Main.storyboard in Resources */,
+				52D660FE1EC9945E00F3FB80 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +548,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52999A191EB9D66A00A36490 /* LoginViewController.swift in Sources */,
+				52D661001EC9B37B00F3FB80 /* MyTabViewController.swift in Sources */,
 				521A8B8D1EC1DFF200A589A1 /* MyProfile.swift in Sources */,
 				52999A131EB9C71700A36490 /* DatabaseController.swift in Sources */,
 				52999A111EB9BAD500A36490 /* MyUtil.swift in Sources */,

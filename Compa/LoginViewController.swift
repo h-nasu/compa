@@ -14,9 +14,12 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
 
         // Check Login Status
-        self.checkLoginAndNavigate()
+        MyUtil.checkLoginAndNavigateToFriends(self)
         
         // Make login button
         /*
@@ -53,10 +56,10 @@ class LoginViewController: UIViewController {
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Logged in!")
                 let connection = GraphRequestConnection()
-                connection.add(FBGetRequest(nil, nil)) { httpResponse, result in
+                connection.add(FBGetRequest(nil, ["fields": "id, name, birthday, picture"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
-                        print("Graph Request Succeeded: \(response)")
+                        //print("Graph Request Succeeded: \(response)")
                         
                         // Get Logged in User Data
                         let respProfile = response.rawResponse as! NSDictionary
@@ -73,7 +76,7 @@ class LoginViewController: UIViewController {
                         MyProfile.sharedInstance.nsBirthday = MyUtil.nsDateFormat((nsBirthday["birthdayNSStr"] as? String)!)
                         
                         // Navigate
-                        self.checkLoginAndNavigate()
+                        MyUtil.checkLoginAndNavigateToFriends(self)
                         
                     case .failed(let error):
                         print("Graph Request Failed: \(error)")

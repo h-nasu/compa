@@ -9,13 +9,19 @@
 import UIKit
 import FacebookCore
 
-// TODO Add more User and forever scroll
 // TODO Search Friends
+// Logout Share
+// images
+// translate
+// if no internet
+
 
 class FriendsTableViewController: UITableViewController {
     
     //MARK: Properties
     var friends = [Friend]()
+    var nextPage: String?
+    var loading = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,66 +31,10 @@ class FriendsTableViewController: UITableViewController {
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
         
-        self.loadSampleFriends()
+        //self.loadSampleFriends()
         
-        let connection = GraphRequestConnection()
-        connection.add(FBGetRequest("/" + MyProfile.sharedInstance.id! + "/friends", nil)) { response, result in
-            switch result {
-            case .success(let response):
-                
-                print("Custom Graph Request Succeeded: \(response)")
-                //print("Check Raw Response Data: \(response.rawResponse)")
-                
-                let respData = response.rawResponse as! NSDictionary
-                let respFriends = respData["data"] as! [NSDictionary]
-                
-                //print("Get Friends List: \(respFriends)")
-                
-                let oldFriendsCount = self.friends.count
-                
-                for respFriend in respFriends {
-                    
-                    if respFriend["birthday"] == nil {
-                        continue
-                    }
-                    
-                    print("Friend: \(respFriend)")
-                    
-                    let id = respFriend["id"] as! String
-                    let name = respFriend["name"] as! String
-                    
-                    let photoData = respFriend["picture"] as! NSDictionary
-                    let photoUrl = photoData["data"] as! NSDictionary
-                    let photo = photoUrl["url"] as! String
-                    
-                    let date = respFriend["birthday"] as! String
-                    
-                    let nsBirthday = MyUtil.convertFBDatetoDEfaultDate(date)
-                    let birthdayStr = nsBirthday["birthdayStr"] as! String
-                    let birthdayNSStr = nsBirthday["birthdayNSStr"] as! String
-                    
-                    guard let friend = Friend(id: id, name: name, photoUrl: photo, nsBirthday: MyUtil.nsDateFormat(birthdayNSStr), birthday: birthdayStr) else {
-                        fatalError("something happened to friend1")
-                    }
-                    self.friends.append(friend)
-                    
-                }
-                
-                if self.friends.count != oldFriendsCount {
-                    let newFriendsCount = self.friends.count - oldFriendsCount
-                    let tableV = self.tableView
-                    tableV?.beginUpdates()
-                    for i in 0 ..< newFriendsCount {
-                        tableV?.insertRows(at: [IndexPath(row: oldFriendsCount+i, section: 0)], with: .automatic)
-                    }
-                    tableV?.endUpdates()
-                }
-   
-            case .failed(let error):
-                print("Custom Graph Request Failed: \(error)")
-            }
-        }
-        connection.start()
+        //MyUtil.checkLoginAndNavigateToLogin(self)
+        //self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
  
 
         // Uncomment the following line to preserve selection between presentations
@@ -92,6 +42,19 @@ class FriendsTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MyUtil.checkLoginAndNavigateToLogin(self)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if friends.count == 0 {
+            self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +86,18 @@ class FriendsTableViewController: UITableViewController {
         cell.friendBirthday.text = friend.birthday
 
         return cell
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if nextPage != nil {
+            let offset = scrollView.contentOffset.y
+            let maxOffset = scrollView.contentSize.height - scrollView.frame.size.height
+            let diffOffset = maxOffset - offset
+            if diffOffset <= 0 {
+                self.loadFriends(nextPage!)
+            }
+        }
+        
     }
     
 
@@ -200,6 +175,95 @@ class FriendsTableViewController: UITableViewController {
             fatalError("something happened to friend3")
         }
         friends += [friend1, friend2, friend3]
+    }
+    
+    private func loadFriends(_ url: String) {
+        
+        if (!self.loading) {
+            self.loading = true
+            
+            let connection = GraphRequestConnection()
+            
+            // For Testing
+            connection.add(FBGetRequest(url, nil))
+                //connection.add(FBGetRequest("/" + MyProfile.sharedInstance.id! + "/friends", ["fields": "id, name, birthday, picture", "limit":"5"]))
+                //connection.add(FBGetRequest("/" + MyProfile.sharedInstance.id! + "/friends", nil))
+            { response, result in
+                switch result {
+                case .success(let response):
+                    
+                    //print("Custom Graph Request Succeeded: \(response)")
+                    //print("Check Raw Response Data: \(response.rawResponse)")
+                    
+                    let respData = response.rawResponse as! NSDictionary
+                    let respFriends = respData["data"] as! [NSDictionary]
+                    if respData["paging"] != nil {
+                        let respPage = respData["paging"] as! NSDictionary
+                        
+                        if respPage["next"] != nil {
+                            let bufUrl = respPage["next"] as! String
+                            let urlArr = bufUrl.characters.split(separator: "?").map(String.init)
+                            //self.nextPage = "/me/friends?limit=5&" + urlArr[1]
+                            self.nextPage = "/me/friends?" + urlArr[1]
+                        } else {
+                            self.nextPage = nil
+                        }
+                        
+                    }
+                    
+                    
+                    //print("Get Friends List: \(respFriends)")
+                    
+                    let oldFriendsCount = self.friends.count
+                    
+                    for respFriend in respFriends {
+                        
+                        if respFriend["birthday"] == nil {
+                            continue
+                        }
+                        
+                        //print("Friend: \(respFriend)")
+                        
+                        let id = respFriend["id"] as! String
+                        let name = respFriend["name"] as! String
+                        
+                        let photoData = respFriend["picture"] as! NSDictionary
+                        let photoUrl = photoData["data"] as! NSDictionary
+                        let photo = photoUrl["url"] as! String
+                        
+                        let date = respFriend["birthday"] as! String
+                        
+                        let nsBirthday = MyUtil.convertFBDatetoDEfaultDate(date)
+                        let birthdayStr = nsBirthday["birthdayStr"] as! String
+                        let birthdayNSStr = nsBirthday["birthdayNSStr"] as! String
+                        
+                        guard let friend = Friend(id: id, name: name, photoUrl: photo, nsBirthday: MyUtil.nsDateFormat(birthdayNSStr), birthday: birthdayStr) else {
+                            fatalError("something happened to friend1")
+                        }
+                        self.friends.append(friend)
+                        
+                    }
+                    
+                    if self.friends.count != oldFriendsCount {
+                        let newFriendsCount = self.friends.count - oldFriendsCount
+                        let tableV = self.tableView
+                        tableV?.beginUpdates()
+                        for i in 0 ..< newFriendsCount {
+                            tableV?.insertRows(at: [IndexPath(row: oldFriendsCount+i, section: 0)], with: .automatic)
+                        }
+                        tableV?.endUpdates()
+                    }
+                    
+                    self.loading = false
+                    
+                case .failed(let error):
+                    print("Custom Graph Request Failed: \(error)")
+                }
+            }
+            connection.start()
+            
+        }
+    
     }
 
 }

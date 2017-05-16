@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+import FacebookCore
+
 class MyUtil {
 
     class func nsDateFormat(_ textDate: String) -> NSDate {
@@ -60,6 +62,20 @@ class MyUtil {
         //var nsDict = NSDictionary()
         //nsDict["birthdayStr"] = birthdayStr
         return ["birthdayStr": birthdayStr, "birthdayNSStr": birthdayNSStr]
+    }
+    
+    class func checkLoginAndNavigateToFriends(_ vc: UIViewController) {
+        if AccessToken.current != nil {
+            let FriendsTableVC = vc.storyboard?.instantiateViewController(withIdentifier: "FriendsTableViewController") as? FriendsTableViewController
+            vc.navigationController?.pushViewController(FriendsTableVC!, animated: true)
+        }
+    }
+    
+    class func checkLoginAndNavigateToLogin(_ vc: UIViewController) {
+        if AccessToken.current == nil {
+            let LoginVC = vc.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController
+            vc.navigationController?.pushViewController(LoginVC!, animated: true)
+        }
     }
     
 }
