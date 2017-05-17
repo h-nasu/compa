@@ -9,8 +9,8 @@
 import UIKit
 import FacebookCore
 
-// TODO Search Friends
-// Logout Share
+// TODO
+// invite_friends 
 // images
 // translate
 // if no internet

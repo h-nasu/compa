@@ -46,46 +46,9 @@ class LoginViewController: UIViewController {
     
     // Once the button is clicked, show the login dialog
     func loginButtonClicked() {
-        let loginManager = LoginManager()
-        loginManager.logIn([ .publicProfile, .userFriends, .custom("user_birthday") ], viewController: self) { loginResult in
-            switch loginResult {
-            case .failed(let error):
-                print(error)
-            case .cancelled:
-                print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-                print("Logged in!")
-                let connection = GraphRequestConnection()
-                connection.add(FBGetRequest(nil, ["fields": "id, name, birthday, picture"])) { httpResponse, result in
-                    switch result {
-                    case .success(let response):
-                        //print("Graph Request Succeeded: \(response)")
-                        
-                        // Get Logged in User Data
-                        let respProfile = response.rawResponse as! NSDictionary
-                        MyProfile.sharedInstance.id = respProfile["id"] as? String
-                        MyProfile.sharedInstance.name = respProfile["name"] as? String
-                        
-                        let photoData = respProfile["picture"] as? NSDictionary
-                        let photoUrl = photoData?["data"] as? NSDictionary
-                        MyProfile.sharedInstance.photoUrl = photoUrl?["url"] as? String
-                        
-                        let date = respProfile["birthday"] as? String
-                        let nsBirthday = MyUtil.convertFBDatetoDEfaultDate(date!)
-                        MyProfile.sharedInstance.birthday = nsBirthday["birthdayStr"] as? String
-                        MyProfile.sharedInstance.nsBirthday = MyUtil.nsDateFormat((nsBirthday["birthdayNSStr"] as? String)!)
-                        
-                        // Navigate
-                        MyUtil.checkLoginAndNavigateToFriends(self)
-                        
-                    case .failed(let error):
-                        print("Graph Request Failed: \(error)")
-                    }
-                }
-                connection.start()
-                
-            }
-        }
+        MyUtil.fbLogin(self) { ()->() in
+            MyUtil.checkLoginAndNavigateToFriends(self)
+        };
     }
 
     override func didReceiveMemoryWarning() {
@@ -104,13 +67,5 @@ class LoginViewController: UIViewController {
     }
     */
     
-    // MARK: Private Function
-    
-    private func checkLoginAndNavigate() {
-        if let accessToken = AccessToken.current {
-            let FriendsTableVC = self.storyboard?.instantiateViewController(withIdentifier: "FriendsTableViewController") as? FriendsTableViewController
-            self.navigationController?.pushViewController(FriendsTableVC!, animated: true)
-        }
-    }
 
 }

@@ -13,6 +13,7 @@
 		521A8B8D1EC1DFF200A589A1 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521A8B8C1EC1DFF200A589A1 /* MyProfile.swift */; };
 		52336E3F1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv in Resources */ = {isa = PBXBuildFile; fileRef = 52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */; };
 		5266E2CA1EC1ABA000984405 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5266E2C91EC1ABA000984405 /* Friend.swift */; };
+		5288FB091ECC442200BE2D00 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5288FB081ECC442200BE2D00 /* SettingsTableViewController.swift */; };
 		528D72F81EC4489F005BC887 /* FBRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528D72F71EC4489F005BC887 /* FBRequest.swift */; };
 		52999A0B1EB974DC00A36490 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0A1EB974DC00A36490 /* MyPageViewController.swift */; };
 		52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */; };
@@ -64,6 +65,7 @@
 		521A8B8C1EC1DFF200A589A1 /* MyProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		52336E3E1EC04D2B00EC4D38 /* ZodiacChinaMatch.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ZodiacChinaMatch.csv; sourceTree = "<group>"; };
 		5266E2C91EC1ABA000984405 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
+		5288FB081ECC442200BE2D00 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		528D72F71EC4489F005BC887 /* FBRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FBRequest.swift; sourceTree = "<group>"; };
 		52999A0A1EB974DC00A36490 /* MyPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		52999A0C1EB97EF400A36490 /* CalcCompabilityUIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcCompabilityUIButton.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */,
 				52999A181EB9D66A00A36490 /* LoginViewController.swift */,
 				52999A141EB9CE5300A36490 /* FriendsTableViewController.swift */,
+				5288FB081ECC442200BE2D00 /* SettingsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -562,6 +565,7 @@
 				528D72F81EC4489F005BC887 /* FBRequest.swift in Sources */,
 				52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */,
 				52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */,
+				5288FB091ECC442200BE2D00 /* SettingsTableViewController.swift in Sources */,
 				52D6FBBF1EA9A02F0088C6AA /* Compa.xcdatamodeld in Sources */,
 				521A8B8B1EC1BAAB00A589A1 /* UIHelper.swift in Sources */,
 			);
