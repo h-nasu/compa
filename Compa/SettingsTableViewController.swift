@@ -10,6 +10,8 @@ import UIKit
 
 import FacebookCore
 
+import FBSDKShareKit
+
 class SettingsTableViewController: UITableViewController {
 
     // MARK: Properties
@@ -127,15 +129,40 @@ class SettingsTableViewController: UITableViewController {
         self.loginSwitchText()
     }
     
+    @IBAction func appInviteButton(_ sender: Any) {
+        let content = FBSDKAppInviteContent()
+        content.appLinkURL = NSURL(string: "https://test/myapplink")! as URL
+        content.appInvitePreviewImageURL = NSURL(string: "https://test/myapplink")! as URL
+        // Old Way, now depreciated :
+        //FBSDKAppInviteDialog.showFromViewController(self, withContent: content, delegate: self)
+        //New way :
+        FBSDKAppInviteDialog.show(from: self, with: content, delegate: self as FBSDKAppInviteDialogDelegate)
+        // Do any additional setup after loading the view.
+    }
+    
+    
     // MARK: Private Function
     
     private func loginSwitchText() {
         if self.loginSwitch.isOn {
             self.loginLabel.text = "Logged In"
         } else {
-            self.loginLabel.text = "Not Logged In"
+            self.loginLabel.text = "Login with Facebook"
         }
     }
     
+    
 
 }
+
+
+extension SettingsTableViewController: FBSDKAppInviteDialogDelegate{
+    func appInviteDialog(_ appInviteDialog: FBSDKAppInviteDialog!, didCompleteWithResults results: [AnyHashable : Any]!) {
+        //println("Complete invite without error")
+    }
+    
+    func appInviteDialog(_ appInviteDialog: FBSDKAppInviteDialog!, didFailWithError error: Error!) {
+        //println("Error in invite \(error)")
+    }
+}
+

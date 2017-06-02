@@ -10,7 +10,6 @@ import UIKit
 import FacebookCore
 
 // TODO
-// invite_friends 
 // images
 // translate
 // if no internet
@@ -66,7 +65,8 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if friends.count == 0 {
-            self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
+            //self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
+            self.loadFriends("/me/friends?fields=id,name,birthday,picture")
         }
         
     }

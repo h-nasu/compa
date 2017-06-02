@@ -17,12 +17,19 @@ class CalcResultViewController: UIViewController {
     
     @IBOutlet weak var myBirthdayLabel: UILabel!
     @IBOutlet weak var friendBirthdayLabel: UILabel!
+    
     @IBOutlet weak var myEuroZodiacLabel: UILabel!
+    @IBOutlet weak var myEuroZodiacIcon: UIImageView!
     @IBOutlet weak var friendEuroZodiacLabel: UILabel!
+    @IBOutlet weak var friendEuroZodiacIcon: UIImageView!
     @IBOutlet weak var euroZodiacCompLabel: UILabel!
+    
     @IBOutlet weak var myChinaZodiacLabel: UILabel!
+    @IBOutlet weak var myChinaZodiacIcon: UIImageView!
     @IBOutlet weak var friendChinaZodiacLabel: UILabel!
+    @IBOutlet weak var friendChinaZodiacIcon: UIImageView!
     @IBOutlet weak var chinaZodiacCompLabel: UILabel!
+    
     @IBOutlet weak var averageCompLabel: UILabel!
     
     @IBOutlet weak var averageCompDescLabel: UILabel!
@@ -69,12 +76,16 @@ class CalcResultViewController: UIViewController {
         friendBirthdayLabel.text = friendBirthdayStr
         
         myEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(myBirthday)
+        myEuroZodiacIcon.image = UIImage(named: myEuroZodiacLabel.text!)
         friendEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(friendBirthday)
+        friendEuroZodiacIcon.image = UIImage(named: friendEuroZodiacLabel.text!)
         let zodiacEuroComp = Zodiac.getZodiacEuroPercent(myEuroZodiacLabel.text!, friendEuroZodiacLabel.text!)
         euroZodiacCompLabel.text = " " + String(zodiacEuroComp) + "%"
         
         myChinaZodiacLabel.text = Zodiac.getZodiacChinaSign(myBirthday)
+        myChinaZodiacIcon.image = UIImage(named: myChinaZodiacLabel.text!)
         friendChinaZodiacLabel.text = Zodiac.getZodiacChinaSign(friendBirthday)
+        friendChinaZodiacIcon.image = UIImage(named: friendChinaZodiacLabel.text!)
         let zodiacChinaComp = Zodiac.getZodiacChinaPercent(myChinaZodiacLabel.text!, friendChinaZodiacLabel.text!)
         chinaZodiacCompLabel.text = " " + String(zodiacChinaComp) + "%"
         

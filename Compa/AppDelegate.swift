@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 
 import FacebookCore
+import FBSDKShareKit
 
 import Firebase
 
@@ -65,7 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         return SDKApplicationDelegate.shared.application(app, open: url, options: options)
     }
-
+    
 
 }
 

@@ -29,11 +29,11 @@ class LoginViewController: UIViewController {
         */
         // Add a custom login button to your app
         let myLoginButton = UIButton(type: .custom)
-        myLoginButton.backgroundColor = UIColor.darkGray
+        myLoginButton.backgroundColor = UIColor.blue
         //myLoginButton.frame = CGRect(0, 0, 180, 40)
         myLoginButton.frame = CGRect(origin: CGPoint(x:0,y:0), size: CGSize(width: 180, height: 40))
         myLoginButton.center = view.center
-        myLoginButton.setTitle("Login", for: .normal)
+        myLoginButton.setTitle("Login with Facebook", for: .normal)
         
         // Handle clicks on the button
         //myLoginButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)
