@@ -44,11 +44,17 @@ class LoginViewController: UIViewController {
         
     }
     
+    
     // Once the button is clicked, show the login dialog
     func loginButtonClicked() {
         MyUtil.fbLogin(self) { ()->() in
             MyUtil.checkLoginAndNavigateToFriends(self)
         };
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        MyUtil.checkLoginAndNavigateToFriends(self)
     }
 
     override func didReceiveMemoryWarning() {

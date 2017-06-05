@@ -14,7 +14,6 @@ struct MyProfile {
     //MARK: Properties
     var id: String?
     var name: String?
-    //var photo: UIImage?
     var photoUrl: String?
     var nsBirthday: NSDate?
     var birthday: String?
@@ -22,9 +21,6 @@ struct MyProfile {
     static var sharedInstance = MyProfile()
     
     private init() {}
-    
-    //MARK: Initialization
-    
     
     /*
     init?(id: String, name: String, photoUrl: String?, nsBirthday: NSDate?, birthday: String?) {

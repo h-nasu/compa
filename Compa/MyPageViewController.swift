@@ -14,6 +14,7 @@ class MyPageViewController: UIViewController {
     //MARK: Properties
     @IBOutlet weak var myBirthday: UIDatePicker!
     @IBOutlet weak var friendBirthday: UIDatePicker!
+    @IBOutlet weak var setToMyBirthday: UIButton!
     
     @IBOutlet weak var bannerView: GADBannerView!
     
@@ -29,11 +30,24 @@ class MyPageViewController: UIViewController {
         bannerView.load(request)
         
         
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setToMyBirthday.isHidden = (MyProfile.sharedInstance.nsBirthday != nil) ? false : true
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func setMyToBirthdayAction(_ sender: Any) {
+        myBirthday.date = MyProfile.sharedInstance.nsBirthday! as Date
     }
     
 

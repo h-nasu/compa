@@ -15,7 +15,11 @@ class CalcResultViewController: UIViewController {
     var friendBirthday: NSDate!
     var friend: Friend!
     
+    @IBOutlet weak var myPhoto: UIImageView!
+    @IBOutlet weak var myName: UILabel!
     @IBOutlet weak var myBirthdayLabel: UILabel!
+    @IBOutlet weak var friendPhoto: UIImageView!
+    @IBOutlet weak var friendName: UILabel!
     @IBOutlet weak var friendBirthdayLabel: UILabel!
     
     @IBOutlet weak var myEuroZodiacLabel: UILabel!
@@ -67,6 +71,18 @@ class CalcResultViewController: UIViewController {
             }
             
             myBirthdayStr = MyUtil.stringDateFormat(myBirthday)
+            
+            // Details from Facebook
+            myName.text = MyProfile.sharedInstance.name
+            friendName.text = friend.name
+            
+            myPhoto.downloadedFrom(link: MyProfile.sharedInstance.photoUrl!)
+            //myPhoto.round()
+            friendPhoto.downloadedFrom(link: friend.photoUrl!)
+            //friendPhoto.round()
+            
+            //cell.friendImage.downloadedFrom(link: friend.photoUrl!)
+            
         } else {
             myBirthdayStr = MyUtil.stringDateFormat(myBirthday)
             friendBirthdayStr = MyUtil.stringDateFormat(friendBirthday)

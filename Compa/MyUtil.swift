@@ -133,6 +133,11 @@ class MyUtil {
     class func fbLogout() {
         let loginManager = LoginManager()
         loginManager.logOut()
+        MyProfile.sharedInstance.id = nil
+        MyProfile.sharedInstance.birthday = nil
+        MyProfile.sharedInstance.name = nil
+        MyProfile.sharedInstance.nsBirthday = nil
+        MyProfile.sharedInstance.photoUrl = nil
     }
     
 }

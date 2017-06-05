@@ -10,7 +10,8 @@ import UIKit
 import FacebookCore
 
 // TODO
-// images
+// more add
+// splash screen
 // translate
 // if no internet
 
