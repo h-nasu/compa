@@ -16,27 +16,25 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var friendBirthday: UIDatePicker!
     @IBOutlet weak var setToMyBirthday: UIButton!
     
-    @IBOutlet weak var bannerView: GADBannerView!
+    @IBOutlet weak var expressBanner: GADNativeExpressAdView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
-        bannerView.rootViewController = self
-        let request = GADRequest()
-        request.testDevices = [kGADSimulatorID]
-        bannerView.load(request)
-        
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setToMyBirthday.isHidden = (MyProfile.sharedInstance.nsBirthday != nil) ? false : true
+        
+        expressBanner.adUnitID = "ca-app-pub-3940256099942544/4270592515"
+        expressBanner.rootViewController = self
+        
+        let request = GADRequest()
+        expressBanner.load(request)
+        
         
     }
 

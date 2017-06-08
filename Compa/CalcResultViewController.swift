@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class CalcResultViewController: UIViewController {
 
@@ -39,6 +40,7 @@ class CalcResultViewController: UIViewController {
     @IBOutlet weak var averageCompDescLabel: UILabel!
     @IBOutlet weak var chineseZodiacCompDescLabel: UILabel!
     
+    @IBOutlet weak var bannerView: GADBannerView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +109,16 @@ class CalcResultViewController: UIViewController {
         
         averageCompLabel.text =  " " + String((zodiacEuroComp + zodiacChinaComp) / 2) + "%"
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+        bannerView.rootViewController = self
+        let request = GADRequest()
+        request.testDevices = [kGADSimulatorID]
+        bannerView.load(request)
     }
 
     override func didReceiveMemoryWarning() {

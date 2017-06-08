@@ -9,21 +9,42 @@
 import UIKit
 import FacebookCore
 
+import Firebase
+
 // TODO
-// more add
+// target ad
+// donation
 // splash screen
 // translate
 // if no internet
 
 
-class FriendsTableViewController: UITableViewController, UISearchResultsUpdating {
+class FriendsTableViewController: UITableViewController, UISearchResultsUpdating, GADNativeAppInstallAdLoaderDelegate, GADNativeContentAdLoaderDelegate {
     
     //MARK: Properties
-    var friends = [Friend]()
+    //var friends = [Friend]()
+    var friends = [AnyObject]()
+    
     var nextPage: String?
     var loading = false
     var friendsFiltered = [Friend]()
     let searchController = UISearchController(searchResultsController: nil)
+    
+    /// The ad unit ID from the AdMob UI.
+    let adUnitID = "ca-app-pub-3940256099942544/2247696110"
+    
+    /// The number of native ads to load.
+    var numAdsToLoad = 5
+    
+    /// The native ads.
+    var nativeAds = [GADNativeAd]()
+    
+    /// The ad loader that loads the native ads.
+    var adLoader: GADAdLoader!
+    
+    /// The number of completed ad loads (success or failures).
+    var numAdLoadCallbacks = 0
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +77,25 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        tableView.register(UINib(nibName: "NativeAppInstallAdCell", bundle: nil),
+                           forCellReuseIdentifier: "NativeAppInstallAdCell")
+        tableView.register(UINib(nibName: "NativeContentAdCell", bundle: nil),
+                           forCellReuseIdentifier: "NativeContentAdCell")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         MyUtil.checkLoginAndNavigateToLogin(self)
+        
+        // Prepare the ad loader and start loading ads.
+        adLoader = GADAdLoader(adUnitID: adUnitID,
+                               rootViewController: self,
+                               adTypes: [kGADAdLoaderAdTypeNativeAppInstall,
+                                         kGADAdLoaderAdTypeNativeContent],
+                               options: nil)
+        adLoader.delegate = self
+        //preloadNextAd()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -84,7 +119,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchController.isActive && searchController.searchBar.text != ""{
+        if searchController.isActive && searchController.searchBar.text != "" {
             return self.friendsFiltered.count
         } else {
             return self.friends.count
@@ -92,26 +127,88 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else {
-            fatalError("Dequed cell failed")
-        }
         
-        var friend: Friend
         if searchController.isActive && searchController.searchBar.text != "" {
-            friend = friendsFiltered[indexPath.row]
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else {
+                fatalError("Dequed cell failed")
+            }
+            let friend = friendsFiltered[indexPath.row] as Friend
+            cell.friendName.text = friend.name
+            cell.friendImage.downloadedFrom(link: friend.photoUrl!)
+            cell.friendBirthday.text = friend.birthday
+            return cell
+            
         } else {
-            friend = friends[indexPath.row]
+            if let friend = friends[indexPath.row] as? Friend {
+                guard let cell = tableView.dequeueReusableCell(withIdentifier: "FriendTableViewCell", for: indexPath) as? FriendTableViewCell else {
+                    fatalError("Dequed cell failed")
+                }
+                cell.friendName.text = friend.name
+                cell.friendImage.downloadedFrom(link: friend.photoUrl!)
+                cell.friendBirthday.text = friend.birthday
+                return cell
+            } else if let nativeAppInstallAd = friends[indexPath.row] as? GADNativeAppInstallAd {
+                /// Set the native ad's rootViewController to the current view controller.
+                nativeAppInstallAd.rootViewController = self
+                
+                let nativeAppInstallAdCell = tableView.dequeueReusableCell(
+                    withIdentifier: "NativeAppInstallAdCell", for: indexPath)
+                
+                // Get the app install ad view from the Cell. The view hierarchy for this cell is defined in
+                // NativeAppInstallAdCell.xib.
+                let appInstallAdView = nativeAppInstallAdCell.subviews[0].subviews[0]
+                    as! GADNativeAppInstallAdView
+                
+                // Associate the app install ad view with the app install ad object.
+                // This is required to make the ad clickable.
+                appInstallAdView.nativeAppInstallAd = nativeAppInstallAd
+                
+                // Populate the app install ad view with the app install ad assets.
+                (appInstallAdView.headlineView as! UILabel).text = nativeAppInstallAd.headline
+                (appInstallAdView.priceView as! UILabel).text = nativeAppInstallAd.price
+                (appInstallAdView.starRatingView as! UILabel).text =
+                    nativeAppInstallAd.starRating!.description + "\u{2605}"
+                (appInstallAdView.bodyView as! UILabel).text = nativeAppInstallAd.body
+                // The SDK automatically turns off user interaction for assets that are part of the ad, but
+                // it is still good to be explicit.
+                (appInstallAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
+                (appInstallAdView.callToActionView as! UIButton).setTitle(
+                    nativeAppInstallAd.callToAction, for: UIControlState.normal)
+                
+                return nativeAppInstallAdCell
+            } else {
+                let nativeContentAd = friends[indexPath.row] as! GADNativeContentAd
+                
+                /// Set the native ad's rootViewController to the current view controller.
+                nativeContentAd.rootViewController = self
+                
+                let nativeContentAdCell = tableView.dequeueReusableCell(
+                    withIdentifier: "NativeContentAdCell", for: indexPath)
+                
+                // Get the content ad view from the Cell. The view hierarchy for this cell is defined in
+                // NativeContentAdCell.xib.
+                let contentAdView = nativeContentAdCell.subviews[0].subviews[0]
+                    as! GADNativeContentAdView
+                
+                // Associate the content ad view with the content ad object.
+                // This is required to make the ad clickable.
+                contentAdView.nativeContentAd = nativeContentAd
+                
+                // Populate the content ad view with the content ad assets.
+                (contentAdView.headlineView as! UILabel).text = nativeContentAd.headline
+                (contentAdView.bodyView as! UILabel).text = nativeContentAd.body
+                (contentAdView.advertiserView as! UILabel).text = nativeContentAd.advertiser
+                // The SDK automatically turns off user interaction for assets that are part of the ad, but
+                // it is still good to be explicit.
+                (contentAdView.callToActionView as! UIButton).isUserInteractionEnabled = false
+                (contentAdView.callToActionView as! UIButton).setTitle(
+                    nativeContentAd.callToAction, for: UIControlState.normal)
+                
+                return nativeContentAdCell
+            }
         }
         
-        cell.friendName.text = friend.name
         
-        // imageView.downloadedFrom(link: "http://www.apple.com/euro/ios/ios8/a/generic/images/og.png")
-        //cell.friendImage.image = friend.photo
-        cell.friendImage.downloadedFrom(link: friend.photoUrl!)
-        
-        cell.friendBirthday.text = friend.birthday
-
-        return cell
     }
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -190,7 +287,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             if searchController.isActive && searchController.searchBar.text != "" {
                 calcResultVC.friend = friendsFiltered[indexPath.row]
             } else {
-                calcResultVC.friend = friends[indexPath.row]
+                calcResultVC.friend = friends[indexPath.row] as! Friend
             }
             
         default:
@@ -295,6 +392,8 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                     
                     self.loading = false
                     
+                    self.preloadNextAd()
+                    
                 case .failed(let error):
                     print("Custom Graph Request Failed: \(error)")
                 }
@@ -307,10 +406,79 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     
     private func filterContentForSearchText(searchText: String, scope: String = "All") {
         friendsFiltered = friends.filter { friend in
-            return friend.name.lowercased().contains(searchText.lowercased())
-        }
+            var resFlg:Bool = false
+            if let buf = friend as? Friend {
+                resFlg = buf.name.lowercased().contains(searchText.lowercased())
+            }
+            return  resFlg
+        } as! [Friend]
         
         tableView.reloadData()
+    }
+    
+    /// Preload native ads sequentially.
+    func preloadNextAd() {
+        numAdsToLoad = Int(floor(Double(friends.count / 5)));
+        if numAdLoadCallbacks < numAdsToLoad {
+            adLoader.load(GADRequest())
+        } else {
+            addNativeAds()
+        }
+    }
+    
+    /// Add native ads to the tableViewItems list.
+    func addNativeAds() {
+        if nativeAds.count <= 0 {
+            return
+        }
+        
+        let adInterval = (friends.count / nativeAds.count) + 1
+        var index = 0
+        for nativeAd in nativeAds {
+            if index < friends.count {
+                friends.insert(nativeAd, at: index)
+                index += adInterval
+            } else {
+                break
+            }
+        }
+    }
+    
+    // MARK: - GADAdLoaderDelegate
+    func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
+        print("\(adLoader) failed with error: \(error.localizedDescription)")
+        
+        // Increment the number of ad load callbacks.
+        numAdLoadCallbacks += 1
+        
+        // Load the next native ad.
+        preloadNextAd()
+    }
+    
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeAppInstallAd: GADNativeAppInstallAd) {
+        print("Received native app install ad: \(nativeAppInstallAd)")
+        
+        // Increment the number of ad load callbacks.
+        numAdLoadCallbacks += 1
+        
+        // Add the native ad to the list of native ads.
+        nativeAds.append(nativeAppInstallAd)
+        
+        // Load the next native ad.
+        preloadNextAd()
+    }
+    
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeContentAd: GADNativeContentAd) {
+        print("Received native content ad: \(nativeContentAd)")
+        
+        // Increment the number of ad load callbacks.
+        numAdLoadCallbacks += 1
+        
+        // Add the native ad to the list of native ads.
+        nativeAds.append(nativeContentAd)
+        
+        // Load the next native ad.
+        preloadNextAd()
     }
 
 }
