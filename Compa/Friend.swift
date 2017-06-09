@@ -17,10 +17,11 @@ class Friend {
     var photoUrl: String?
     var nsBirthday: NSDate?
     var birthday: String?
+    var gender: String?
     
     //MARK: Initialization
     
-    init?(id: String, name: String, photoUrl: String?, nsBirthday: NSDate?, birthday: String?) {
+    init?(id: String, name: String, photoUrl: String?, nsBirthday: NSDate?, birthday: String?, gender: String?) {
         if name.isEmpty {
             return nil
         }
@@ -30,5 +31,6 @@ class Friend {
         self.photoUrl = photoUrl
         self.nsBirthday = nsBirthday
         self.birthday = birthday
+        self.gender = gender
     }
 }

@@ -33,6 +33,12 @@ class MyPageViewController: UIViewController {
         expressBanner.rootViewController = self
         
         let request = GADRequest()
+        
+        if MyProfile.sharedInstance.nsBirthday != nil {
+            request.birthday = MyProfile.sharedInstance.nsBirthday! as Date
+            request.gender = MyProfile.sharedInstance.gender! == "male" ? .male : .female
+        }
+        
         expressBanner.load(request)
         
         

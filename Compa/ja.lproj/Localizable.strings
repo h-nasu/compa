@@ -1,0 +1,91 @@
+/* 
+  Localizable.strings
+  Compa
+
+  Created by MacBook Pro on 6/9/2560 BE.
+  Copyright © 2560 CyberWorks. All rights reserved.
+*/
+
+
+/* Label in Login View for login button */
+"Login with Facebook" = "Facebookログイン";
+
+/* Settings Logged In */
+"Logged In" = "ログイン済み";
+
+/* Settings Login with Facebook */
+"Login with Facebook" = "Facebookログイン";
+
+/* Zodiac */
+"Aries" = "おひつじ座";
+
+/* Zodiac */
+"Taurus" = "おうし座";
+
+/* Zodiac */
+"Gemini" = "おうし座";
+
+/* Zodiac */
+"Cancer" = "かに座";
+
+/* Zodiac */
+"Leo" = "しし座";
+
+/* Zodiac */
+"Virgo" = "おとめ座";
+
+/* Zodiac */
+"Libra" = "てんびん座";
+
+/* Zodiac */
+"Scorpio" = "さそり座";
+
+/* Zodiac */
+"Sagittarius" = "いて座";
+
+/* Zodiac */
+"Capricorn" = "やぎ座";
+
+/* Zodiac */
+"Aquarius" = "みずがめ座";
+
+/* Zodiac */
+"Pisces" = "うお座";
+
+
+/* Chinese Zodiac */
+"Rat" = "ネズミ年";
+
+/* Chinese Zodiac */
+"Ox" = "うし年";
+
+/* Chinese Zodiac */
+"Tiger" = "とら年";
+
+/* Chinese Zodiac */
+"Rabbit" = "ウサギ年";
+
+/* Chinese Zodiac */
+"Dragon" = "たつ年";
+
+/* Chinese Zodiac */
+"Snake" = "ヘビ年";
+
+/* Chinese Zodiac */
+"Horse" = "うま年";
+
+/* Chinese Zodiac */
+"Goat" = "ひつじ年";
+
+/* Chinese Zodiac */
+"Monkey" = "さる年";
+
+/* Chinese Zodiac */
+"Rooster" = "とり年";
+
+/* Chinese Zodiac */
+"Dog" = "いぬ年";
+
+/* Chinese Zodiac */
+"Pig" = "イノシシ年";
+

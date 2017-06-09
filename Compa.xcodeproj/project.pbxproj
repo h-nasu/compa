@@ -37,6 +37,7 @@
 		52D6FBEA1EA9A1A40088C6AA /* Zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBE91EA9A1A40088C6AA /* Zodiac.swift */; };
 		52E80D711EE7CA71004EBB00 /* NativeAppInstallAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E80D701EE7CA71004EBB00 /* NativeAppInstallAdCell.xib */; };
 		52E80D731EE7CB27004EBB00 /* NativeContentAdCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52E80D721EE7CB27004EBB00 /* NativeContentAdCell.xib */; };
+		52F657B11EEAA32300E6C9DB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 52F657AF1EEAA32300E6C9DB /* Localizable.strings */; };
 		5EC876F476B2EC8161C07E1E /* Pods_CompaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2EB48DCDED7853D38F4F34B /* Pods_CompaUITests.framework */; };
 		7C15CAA54FEE44D7967A4D72 /* Pods_CompaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B836D64273D89CB7778B6FF8 /* Pods_CompaTests.framework */; };
 /* End PBXBuildFile section */
@@ -98,6 +99,8 @@
 		52D6FBE91EA9A1A40088C6AA /* Zodiac.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zodiac.swift; sourceTree = "<group>"; };
 		52E80D701EE7CA71004EBB00 /* NativeAppInstallAdCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeAppInstallAdCell.xib; sourceTree = "<group>"; };
 		52E80D721EE7CB27004EBB00 /* NativeContentAdCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NativeContentAdCell.xib; sourceTree = "<group>"; };
+		52F657AE1EEA966000E6C9DB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
+		52F657B01EEAA32300E6C9DB /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = Compa/ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5DCDA6033BA2CBF89F2C0FCA /* Pods-CompaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CompaTests/Pods-CompaTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B480FF6364A9D0CBAA6E44D0 /* Pods-CompaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CompaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CompaTests/Pods-CompaTests.release.xcconfig"; sourceTree = "<group>"; };
 		B836D64273D89CB7778B6FF8 /* Pods_CompaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CompaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -176,6 +179,7 @@
 		529D22D21EBB24E1004F9216 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
+				52F657B21EEAAF1700E6C9DB /* ja */,
 				52D6FBC51EA9A02F0088C6AA /* Info.plist */,
 				52D660FD1EC9945E00F3FB80 /* GoogleService-Info.plist */,
 				52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */,
@@ -240,6 +244,14 @@
 				52D6FBDB1EA9A02F0088C6AA /* Info.plist */,
 			);
 			path = CompaUITests;
+			sourceTree = "<group>";
+		};
+		52F657B21EEAAF1700E6C9DB /* ja */ = {
+			isa = PBXGroup;
+			children = (
+				52F657AF1EEAA32300E6C9DB /* Localizable.strings */,
+			);
+			name = ja;
 			sourceTree = "<group>";
 		};
 		6881BD67075E85B4784E2B70 /* Pods */ = {
@@ -369,6 +381,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 52D6FBAA1EA9A02F0088C6AA;
 			productRefGroup = 52D6FBB41EA9A02F0088C6AA /* Products */;
@@ -392,6 +405,7 @@
 				52D6FBC41EA9A02F0088C6AA /* LaunchScreen.storyboard in Resources */,
 				52E80D731EE7CB27004EBB00 /* NativeContentAdCell.xib in Resources */,
 				52D6FBC11EA9A02F0088C6AA /* Assets.xcassets in Resources */,
+				52F657B11EEAA32300E6C9DB /* Localizable.strings in Resources */,
 				529D22CE1EBB216E004F9216 /* sample.csv in Resources */,
 				52D6FBBC1EA9A02F0088C6AA /* Main.storyboard in Resources */,
 				52D660FE1EC9945E00F3FB80 /* GoogleService-Info.plist in Resources */,
@@ -615,6 +629,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				52D6FBBB1EA9A02F0088C6AA /* Base */,
+				52F657AE1EEA966000E6C9DB /* ja */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -627,6 +642,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		52F657AF1EEAA32300E6C9DB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52F657B01EEAA32300E6C9DB /* ja */,
+			);
+			name = Localizable.strings;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -634,6 +658,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -685,6 +710,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";

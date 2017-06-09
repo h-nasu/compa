@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,21 +29,25 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="104"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2N-gN-GR2">
-                                                    <rect key="frame" x="22" y="32" width="236" height="40"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2N-gN-GR2">
+                                                    <rect key="frame" x="18" y="42" width="42" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tW7-zG-DJA">
-                                                    <rect key="frame" x="286" y="37" width="51" height="31"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tW7-zG-DJA">
+                                                    <rect key="frame" x="308" y="37" width="51" height="31"/>
                                                     <connections>
                                                         <action selector="loginSwitchChanged:" destination="1a4-fY-v8f" eventType="valueChanged" id="V4h-7P-Ca3"/>
                                                     </connections>
                                                 </switch>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="r2N-gN-GR2" firstAttribute="centerY" secondItem="v0M-81-Fku" secondAttribute="centerY" id="Dh4-Fc-ChA"/>
+                                                <constraint firstItem="r2N-gN-GR2" firstAttribute="leading" secondItem="v0M-81-Fku" secondAttribute="leadingMargin" constant="10" id="EDr-Nh-arY"/>
+                                                <constraint firstItem="tW7-zG-DJA" firstAttribute="centerY" secondItem="v0M-81-Fku" secondAttribute="centerY" id="a5N-lD-04c"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="tW7-zG-DJA" secondAttribute="trailing" constant="10" id="ixQ-V4-QOS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="85" id="Tdn-BN-rYw" customClass="InviteTableViewCell" customModule="Compa" customModuleProvider="target">
@@ -52,22 +57,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yn-wC-lgM">
-                                                    <rect key="frame" x="21" y="32" width="45" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Share" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Yn-wC-lgM">
+                                                    <rect key="frame" x="18" y="32.5" width="44.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-VG-1sE" customClass="CalcCompabilityUIButton" customModule="Compa" customModuleProvider="target">
-                                                    <rect key="frame" x="167" y="28" width="183" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UHl-VG-1sE" customClass="CalcCompabilityUIButton" customModule="Compa" customModuleProvider="target">
+                                                    <rect key="frame" x="174" y="27" width="183" height="30"/>
                                                     <state key="normal" title="Share to Facebook Friends"/>
                                                     <connections>
                                                         <action selector="appInviteButton:" destination="1a4-fY-v8f" eventType="touchUpInside" id="shh-bq-lak"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="UHl-VG-1sE" secondAttribute="trailing" constant="10" id="KSK-cp-qbO"/>
+                                                <constraint firstItem="4Yn-wC-lgM" firstAttribute="centerY" secondItem="DOw-wK-Y7f" secondAttribute="centerY" id="rBk-uB-0QC"/>
+                                                <constraint firstItem="UHl-VG-1sE" firstAttribute="centerY" secondItem="DOw-wK-Y7f" secondAttribute="centerY" id="uFR-rd-8gb"/>
+                                                <constraint firstItem="4Yn-wC-lgM" firstAttribute="leading" secondItem="DOw-wK-Y7f" secondAttribute="leadingMargin" constant="10" id="uKP-NI-PDf"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>

@@ -17,6 +17,7 @@ struct MyProfile {
     var photoUrl: String?
     var nsBirthday: NSDate?
     var birthday: String?
+    var gender: String?
     
     static var sharedInstance = MyProfile()
     

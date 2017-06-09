@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
         //myLoginButton.frame = CGRect(0, 0, 180, 40)
         myLoginButton.frame = CGRect(origin: CGPoint(x:0,y:0), size: CGSize(width: 180, height: 40))
         myLoginButton.center = view.center
-        myLoginButton.setTitle("Login with Facebook", for: .normal)
+        myLoginButton.setTitle(NSLocalizedString("Login with Facebook", comment: "Label in Login View for login button"), for: .normal)
         
         // Handle clicks on the button
         //myLoginButton.addTarget(<#T##target: Any?##Any?#>, action: <#T##Selector#>, for: <#T##UIControlEvents#>)

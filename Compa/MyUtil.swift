@@ -90,7 +90,7 @@ class MyUtil {
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
                 print("Logged in!")
                 let connection = GraphRequestConnection()
-                connection.add(FBGetRequest(nil, ["fields": "id, name, birthday, picture"])) { httpResponse, result in
+                connection.add(FBGetRequest(nil, ["fields": "id, name, birthday, picture, gender"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
                         //print("Graph Request Succeeded: \(response)")
@@ -108,6 +108,7 @@ class MyUtil {
                         let nsBirthday = MyUtil.convertFBDatetoDEfaultDate(date!)
                         MyProfile.sharedInstance.birthday = nsBirthday["birthdayStr"] as? String
                         MyProfile.sharedInstance.nsBirthday = MyUtil.nsDateFormat((nsBirthday["birthdayNSStr"] as? String)!)
+                        MyProfile.sharedInstance.gender = respProfile["gender"] as? String
                         
                         // Callback
                         callback()

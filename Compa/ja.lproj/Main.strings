@@ -1,0 +1,135 @@
+
+/* Class = "UINavigationItem"; title = "Friends"; ObjectID = "0NE-A0-1d2"; */
+"0NE-A0-1d2.title" = "友達";
+
+/* Class = "UINavigationItem"; title = "Home"; ObjectID = "1fN-rZ-Oat"; */
+"1fN-rZ-Oat.title" = "ホーム";
+
+/* Class = "UINavigationItem"; title = "Settings"; ObjectID = "3Iq-6n-AQT"; */
+"3Iq-6n-AQT.title" = "設定";
+
+/* Class = "UILabel"; text = "Share"; ObjectID = "4Yn-wC-lgM"; */
+"4Yn-wC-lgM.text" = "シェア";
+
+/* Class = "UILabel"; text = "Chinese Zodiac"; ObjectID = "6II-0u-rPF"; */
+"6II-0u-rPF.text" = "干支";
+
+/* Class = "UIViewController"; title = "Login"; ObjectID = "7Eq-vR-bEN"; */
+"7Eq-vR-bEN.title" = "ログイン";
+
+/* Class = "UILabel"; text = "friendEuroZodiac"; ObjectID = "8VB-JH-gKC"; */
+"8VB-JH-gKC.text" = "friendEuroZodiac";
+
+/* Class = "UILabel"; text = "Zodiac"; ObjectID = "AJv-Hj-owJ"; */
+"AJv-Hj-owJ.text" = "星座";
+
+/* Class = "UITabBarItem"; title = "Friends"; ObjectID = "AdM-lo-5Ri"; */
+"AdM-lo-5Ri.title" = "友達";
+
+/* Class = "UILabel"; text = "myChinaZodiac"; ObjectID = "Ahr-pg-ZDJ"; */
+"Ahr-pg-ZDJ.text" = "myChinaZodiac";
+
+/* Class = "UILabel"; text = " "; ObjectID = "BGU-s5-AzU"; */
+"BGU-s5-AzU.text" = " ";
+
+/* Class = "UILabel"; text = "euroZodiacComp"; ObjectID = "Ck9-wN-dZD"; */
+"Ck9-wN-dZD.text" = "euroZodiacComp";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "DHG-wV-cW3"; */
+"DHG-wV-cW3.text" = "Label";
+
+/* Class = "UINavigationItem"; title = "Login"; ObjectID = "Dag-4Q-mon"; */
+"Dag-4Q-mon.title" = "ログイン";
+
+/* Class = "UILabel"; text = " "; ObjectID = "EWg-ER-4UM"; */
+"EWg-ER-4UM.text" = " ";
+
+/* Class = "UILabel"; text = "friendChinaZodiac"; ObjectID = "Fbw-Zf-1i7"; */
+"Fbw-Zf-1i7.text" = "friendChinaZodiac";
+
+/* Class = "UILabel"; text = "FriendBirthday"; ObjectID = "Hbg-an-aGO"; */
+"Hbg-an-aGO.text" = "FriendBirthday";
+
+/* Class = "UILabel"; text = "chinaZodiacComp"; ObjectID = "HiP-hQ-Ezp"; */
+"HiP-hQ-Ezp.text" = "chinaZodiacComp";
+
+/* Class = "UIButton"; normalTitle = "Calc Compability"; ObjectID = "Jjj-in-yV6"; */
+"Jjj-in-yV6.normalTitle" = "相性診断";
+
+/* Class = "UIButton"; normalTitle = "Set To My Birthday"; ObjectID = "MKO-UJ-pQ4"; */
+"MKO-UJ-pQ4.normalTitle" = "自分の誕生日に設定";
+
+/* Class = "UILabel"; text = " "; ObjectID = "OAd-8P-URg"; */
+"OAd-8P-URg.text" = " ";
+
+/* Class = "UILabel"; text = "My Birthday"; ObjectID = "QkL-Kx-3rt"; */
+"QkL-Kx-3rt.text" = "自分の誕生日";
+
+/* Class = "UILabel"; text = "Compability of"; ObjectID = "Qw5-P8-UUy"; */
+"Qw5-P8-UUy.text" = "総合相性";
+
+/* Class = "UILabel"; text = " "; ObjectID = "TgS-Nh-h4w"; */
+"TgS-Nh-h4w.text" = " ";
+
+/* Class = "UIButton"; normalTitle = "Share to Facebook Friends"; ObjectID = "UHl-VG-1sE"; */
+"UHl-VG-1sE.normalTitle" = "アプリを友達に紹介";
+
+/* Class = "UILabel"; text = "myEuroZodiac"; ObjectID = "Xph-DX-6dd"; */
+"Xph-DX-6dd.text" = "myEuroZodiac";
+
+/* Class = "UILabel"; text = "myBirthday"; ObjectID = "dH1-cr-N4d"; */
+"dH1-cr-N4d.text" = "myBirthday";
+
+/* Class = "UILabel"; text = "Friend Birthday"; ObjectID = "fUo-KT-5XT"; */
+"fUo-KT-5XT.text" = "相手の誕生日";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "g0S-Ss-s0Q"; */
+"g0S-Ss-s0Q.title" = "ホーム";
+
+/* Class = "UILabel"; text = " "; ObjectID = "hBf-5g-cdW"; */
+"hBf-5g-cdW.text" = " ";
+
+/* Class = "UILabel"; text = "Me"; ObjectID = "juW-gw-fhQ"; */
+"juW-gw-fhQ.text" = "自分";
+
+/* Class = "UILabel"; text = " "; ObjectID = "kb1-Ys-Ck0"; */
+"kb1-Ys-Ck0.text" = " ";
+
+/* Class = "UITabBarItem"; title = "My Page"; ObjectID = "lHV-Mo-ART"; */
+"lHV-Mo-ART.title" = "ホーム";
+
+/* Class = "UINavigationItem"; title = "My Page"; ObjectID = "nfw-K0-Xr3"; */
+"nfw-K0-Xr3.title" = "ホーム";
+
+/* Class = "UILabel"; text = "Friend"; ObjectID = "plI-4c-Hid"; */
+"plI-4c-Hid.text" = "相手";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "r2N-gN-GR2"; */
+"r2N-gN-GR2.text" = "Label";
+
+/* Class = "UILabel"; text = " "; ObjectID = "sFP-l1-vAN"; */
+"sFP-l1-vAN.text" = " ";
+
+/* Class = "UITabBarItem"; title = "Friends"; ObjectID = "tKe-vd-cbx"; */
+"tKe-vd-cbx.title" = "友達";
+
+/* Class = "UILabel"; text = " "; ObjectID = "vlU-HN-AGv"; */
+"vlU-HN-AGv.text" = " ";
+
+/* Class = "UINavigationController"; title = "Settings"; ObjectID = "wKo-QZ-531"; */
+"wKo-QZ-531.title" = "設定";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "wbP-Wl-Rxx"; */
+"wbP-Wl-Rxx.text" = "Label";
+
+/* Class = "UILabel"; text = "averageComp"; ObjectID = "xoV-hM-0ek"; */
+"xoV-hM-0ek.text" = "averageComp";
+
+/* Class = "UIViewController"; title = "Compability"; ObjectID = "yGp-At-RJ9"; */
+"yGp-At-RJ9.title" = "相性";
+
+/* Class = "UINavigationItem"; title = "Compability"; ObjectID = "yeQ-gN-1zf"; */
+"yeQ-gN-1zf.title" = "相性";
+
+/* Class = "UITabBarItem"; title = "Settings"; ObjectID = "zCf-CT-AMp"; */
+"zCf-CT-AMp.title" = "設定";

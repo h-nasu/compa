@@ -93,18 +93,22 @@ class CalcResultViewController: UIViewController {
         myBirthdayLabel.text = myBirthdayStr
         friendBirthdayLabel.text = friendBirthdayStr
         
-        myEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(myBirthday)
-        myEuroZodiacIcon.image = UIImage(named: myEuroZodiacLabel.text!)
-        friendEuroZodiacLabel.text = Zodiac.getZodiacEuroSign(friendBirthday)
-        friendEuroZodiacIcon.image = UIImage(named: friendEuroZodiacLabel.text!)
-        let zodiacEuroComp = Zodiac.getZodiacEuroPercent(myEuroZodiacLabel.text!, friendEuroZodiacLabel.text!)
+        let myZodiacName = Zodiac.getZodiacEuroSign(myBirthday)
+        myEuroZodiacLabel.text = NSLocalizedString(myZodiacName, comment: "Zodiac")
+        myEuroZodiacIcon.image = UIImage(named: myZodiacName)
+        let friendZodiacName = Zodiac.getZodiacEuroSign(friendBirthday)
+        friendEuroZodiacLabel.text = NSLocalizedString(friendZodiacName, comment: "Zodiac")
+        friendEuroZodiacIcon.image = UIImage(named: friendZodiacName)
+        let zodiacEuroComp = Zodiac.getZodiacEuroPercent(myZodiacName, friendZodiacName)
         euroZodiacCompLabel.text = " " + String(zodiacEuroComp) + "%"
         
-        myChinaZodiacLabel.text = Zodiac.getZodiacChinaSign(myBirthday)
-        myChinaZodiacIcon.image = UIImage(named: myChinaZodiacLabel.text!)
-        friendChinaZodiacLabel.text = Zodiac.getZodiacChinaSign(friendBirthday)
-        friendChinaZodiacIcon.image = UIImage(named: friendChinaZodiacLabel.text!)
-        let zodiacChinaComp = Zodiac.getZodiacChinaPercent(myChinaZodiacLabel.text!, friendChinaZodiacLabel.text!)
+        let myChinaZodiacName = Zodiac.getZodiacChinaSign(myBirthday)
+        myChinaZodiacLabel.text = NSLocalizedString(myChinaZodiacName, comment: "Chinese Zodiac")
+        myChinaZodiacIcon.image = UIImage(named: myChinaZodiacName)
+        let friendChinaZodiacName = Zodiac.getZodiacChinaSign(friendBirthday)
+        friendChinaZodiacLabel.text = NSLocalizedString(friendChinaZodiacName, comment: "Chinese Zodiac")
+        friendChinaZodiacIcon.image = UIImage(named: friendChinaZodiacName)
+        let zodiacChinaComp = Zodiac.getZodiacChinaPercent(myChinaZodiacName, friendChinaZodiacName)
         chinaZodiacCompLabel.text = " " + String(zodiacChinaComp) + "%"
         
         averageCompLabel.text =  " " + String((zodiacEuroComp + zodiacChinaComp) / 2) + "%"
@@ -118,6 +122,12 @@ class CalcResultViewController: UIViewController {
         bannerView.rootViewController = self
         let request = GADRequest()
         request.testDevices = [kGADSimulatorID]
+        
+        if MyProfile.sharedInstance.nsBirthday != nil {
+            request.birthday = MyProfile.sharedInstance.nsBirthday! as Date
+            request.gender = MyProfile.sharedInstance.gender! == "male" ? .male : .female
+        }
+        
         bannerView.load(request)
     }
 

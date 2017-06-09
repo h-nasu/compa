@@ -12,11 +12,11 @@ import FacebookCore
 import Firebase
 
 // TODO
-// target ad
 // donation
 // splash screen
 // translate
 // if no internet
+// refactor
 
 
 class FriendsTableViewController: UITableViewController, UISearchResultsUpdating, GADNativeAppInstallAdLoaderDelegate, GADNativeContentAdLoaderDelegate {
@@ -58,7 +58,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         self.navigationItem.setHidesBackButton(true, animated: false)
  
         
-        self.searchController.searchResultsUpdater = self as! UISearchResultsUpdating
+        self.searchController.searchResultsUpdater = self as UISearchResultsUpdating
         self.searchController.dimsBackgroundDuringPresentation = false
         //definesPresentationContext = true
         self.searchController.hidesNavigationBarDuringPresentation = false;
@@ -102,7 +102,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
         super.viewDidAppear(animated)
         if friends.count == 0 {
             //self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
-            self.loadFriends("/me/friends?fields=id,name,birthday,picture")
+            self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender")
         }
         
     }
@@ -298,21 +298,6 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     
     //MARK: Private Methods
     
-    private func loadSampleFriends() {
-        //let testImage = UIImage(named: "defaultPhoto")
-        let testImage = "https://scontent.xx.fbcdn.net/v/t1.0-1/c0.9.50.50/p50x50/10171803_10203680803685727_1619338145_n.jpg?oh=69e670f70ecdcf9b8584cf4350266808&oe=59BB72E4"
-        guard let friend1 = Friend(id: "dfaaefa", name: "Fafa", photoUrl: testImage, nsBirthday: MyUtil.nsDateFormat("1982-10-06"), birthday: "1982-10-06") else {
-            fatalError("something happened to friend1")
-        }
-        guard let friend2 = Friend(id: "dfadfaea", name: "Gege", photoUrl: testImage, nsBirthday: MyUtil.nsDateFormat("1988-12-04"), birthday: "1988-12-04") else {
-            fatalError("something happened to friend2")
-        }
-        guard let friend3 = Friend(id: "khjijll", name: "Lolo", photoUrl: testImage, nsBirthday: MyUtil.nsDateFormat("1981-09-17"), birthday: "1981-09-17") else {
-            fatalError("something happened to friend3")
-        }
-        friends += [friend1, friend2, friend3]
-    }
-    
     private func loadFriends(_ url: String) {
         
         if (!self.loading) {
@@ -373,7 +358,9 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                         let birthdayStr = nsBirthday["birthdayStr"] as! String
                         let birthdayNSStr = nsBirthday["birthdayNSStr"] as! String
                         
-                        guard let friend = Friend(id: id, name: name, photoUrl: photo, nsBirthday: MyUtil.nsDateFormat(birthdayNSStr), birthday: birthdayStr) else {
+                        let gender = respFriend["gender"] as! String
+                        
+                        guard let friend = Friend(id: id, name: name, photoUrl: photo, nsBirthday: MyUtil.nsDateFormat(birthdayNSStr), birthday: birthdayStr, gender: gender) else {
                             fatalError("something happened to friend1")
                         }
                         self.friends.append(friend)
@@ -420,7 +407,14 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     func preloadNextAd() {
         numAdsToLoad = Int(floor(Double(friends.count / 5)));
         if numAdLoadCallbacks < numAdsToLoad {
-            adLoader.load(GADRequest())
+            
+            let request = GADRequest()
+            if MyProfile.sharedInstance.nsBirthday != nil {
+                request.birthday = MyProfile.sharedInstance.nsBirthday! as Date
+                request.gender = MyProfile.sharedInstance.gender! == "male" ? .male : .female
+            }
+            
+            adLoader.load(request)
         } else {
             addNativeAds()
         }

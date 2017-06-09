@@ -145,9 +145,9 @@ class SettingsTableViewController: UITableViewController {
     
     private func loginSwitchText() {
         if self.loginSwitch.isOn {
-            self.loginLabel.text = "Logged In"
+            self.loginLabel.text = NSLocalizedString("Logged In", comment: "Settings Logged In")
         } else {
-            self.loginLabel.text = "Login with Facebook"
+            self.loginLabel.text = NSLocalizedString("Login with Facebook", comment: "Settings Login with Facebook")
         }
     }
     
