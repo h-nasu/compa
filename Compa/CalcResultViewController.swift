@@ -83,8 +83,6 @@ class CalcResultViewController: UIViewController {
             friendPhoto.downloadedFrom(link: friend.photoUrl!)
             //friendPhoto.round()
             
-            //cell.friendImage.downloadedFrom(link: friend.photoUrl!)
-            
         } else {
             myBirthdayStr = MyUtil.stringDateFormat(myBirthday)
             friendBirthdayStr = MyUtil.stringDateFormat(friendBirthday)

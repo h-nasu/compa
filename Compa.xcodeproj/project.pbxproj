@@ -27,7 +27,6 @@
 		52D660FE1EC9945E00F3FB80 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 52D660FD1EC9945E00F3FB80 /* GoogleService-Info.plist */; };
 		52D661001EC9B37B00F3FB80 /* MyTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D660FF1EC9B37B00F3FB80 /* MyTabViewController.swift */; };
 		52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */; };
-		52D6FBB91EA9A02F0088C6AA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBB81EA9A02F0088C6AA /* ViewController.swift */; };
 		52D6FBBC1EA9A02F0088C6AA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D6FBBA1EA9A02F0088C6AA /* Main.storyboard */; };
 		52D6FBBF1EA9A02F0088C6AA /* Compa.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 52D6FBBD1EA9A02F0088C6AA /* Compa.xcdatamodeld */; };
 		52D6FBC11EA9A02F0088C6AA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D6FBC01EA9A02F0088C6AA /* Assets.xcassets */; };
@@ -84,7 +83,6 @@
 		52D660FF1EC9B37B00F3FB80 /* MyTabViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabViewController.swift; sourceTree = "<group>"; };
 		52D6FBB31EA9A02F0088C6AA /* Compa.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Compa.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6FBB61EA9A02F0088C6AA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		52D6FBB81EA9A02F0088C6AA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		52D6FBBB1EA9A02F0088C6AA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		52D6FBBE1EA9A02F0088C6AA /* Compa.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Compa.xcdatamodel; sourceTree = "<group>"; };
 		52D6FBC01EA9A02F0088C6AA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 		529D22D01EBB248F004F9216 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				52D6FBB81EA9A02F0088C6AA /* ViewController.swift */,
 				52D660FF1EC9B37B00F3FB80 /* MyTabViewController.swift */,
 				52999A0A1EB974DC00A36490 /* MyPageViewController.swift */,
 				52999A0E1EB988DF00A36490 /* CalcResultViewController.swift */,
@@ -583,7 +580,6 @@
 				52999A151EB9CE5300A36490 /* FriendsTableViewController.swift in Sources */,
 				521A8B891EC1B68B00A589A1 /* FriendTableViewCell.swift in Sources */,
 				52D6FBEA1EA9A1A40088C6AA /* Zodiac.swift in Sources */,
-				52D6FBB91EA9A02F0088C6AA /* ViewController.swift in Sources */,
 				528D72F81EC4489F005BC887 /* FBRequest.swift in Sources */,
 				52D6FBB71EA9A02F0088C6AA /* AppDelegate.swift in Sources */,
 				52999A0D1EB97EF400A36490 /* CalcCompabilityUIButton.swift in Sources */,

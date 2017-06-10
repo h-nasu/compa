@@ -13,8 +13,8 @@ import Firebase
 
 // TODO
 // donation
-// splash screen
-// translate
+// Thai Translation
+// Language switching
 // if no internet
 // refactor
 
@@ -48,36 +48,15 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //self.navigationController?.popToViewController((self.navigationController?.viewControllers[1])!, animated: false)
-        //self.navigationItem.setHidesBackButton(true, animated:true);
-        /*
-        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
-        navigationItem.leftBarButtonItem = backButton
- */
+   
         self.navigationItem.setHidesBackButton(true, animated: false)
- 
         
         self.searchController.searchResultsUpdater = self as UISearchResultsUpdating
         self.searchController.dimsBackgroundDuringPresentation = false
-        //definesPresentationContext = true
         self.searchController.hidesNavigationBarDuringPresentation = false;
-        
         self.searchController.searchBar.frame = CGRect(x: 0, y: 0, width: 200, height: 20)
         self.navigationItem.titleView = self.searchController.searchBar
-        
-        /*
-        let leftNavBarButton = UIBarButtonItem(customView: self.searchController.searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
- */
 
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
         tableView.register(UINib(nibName: "NativeAppInstallAdCell", bundle: nil),
                            forCellReuseIdentifier: "NativeAppInstallAdCell")
         tableView.register(UINib(nibName: "NativeContentAdCell", bundle: nil),
@@ -95,14 +74,13 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                                          kGADAdLoaderAdTypeNativeContent],
                                options: nil)
         adLoader.delegate = self
-        //preloadNextAd()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if friends.count == 0 {
-            //self.loadFriends("/me/friends?fields=id,name,birthday,picture&limit=5")
-            self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender")
+            self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender&limit=4")
+            //self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender")
         }
         
     }
@@ -279,7 +257,7 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                 fatalError("Unexpected destination: \(segue.destination)")
             }
             guard let selectedFriendCell = sender as? FriendTableViewCell else {
-                fatalError("Unexpected sender: \(sender)")
+                fatalError("Unexpected sender: \(String(describing: sender))")
             }
             guard let indexPath = tableView.indexPath(for: selectedFriendCell) else {
                 fatalError("The selected cell is not being displayed by the table")
@@ -305,16 +283,10 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             
             let connection = GraphRequestConnection()
             
-            // For Testing
             connection.add(FBGetRequest(url, nil))
-                //connection.add(FBGetRequest("/" + MyProfile.sharedInstance.id! + "/friends", ["fields": "id, name, birthday, picture", "limit":"5"]))
-                //connection.add(FBGetRequest("/" + MyProfile.sharedInstance.id! + "/friends", nil))
             { response, result in
                 switch result {
                 case .success(let response):
-                    
-                    //print("Custom Graph Request Succeeded: \(response)")
-                    //print("Check Raw Response Data: \(response.rawResponse)")
                     
                     let respData = response.rawResponse as! NSDictionary
                     let respFriends = respData["data"] as! [NSDictionary]
@@ -324,7 +296,6 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                         if respPage["next"] != nil {
                             let bufUrl = respPage["next"] as! String
                             let urlArr = bufUrl.characters.split(separator: "?").map(String.init)
-                            //self.nextPage = "/me/friends?limit=5&" + urlArr[1]
                             self.nextPage = "/me/friends?" + urlArr[1]
                         } else {
                             self.nextPage = nil
@@ -332,18 +303,13 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                         
                     }
                     
-                    
-                    //print("Get Friends List: \(respFriends)")
-                    
-                    let oldFriendsCount = self.friends.count
+                    var oldFriendsCount = self.friends.count
                     
                     for respFriend in respFriends {
                         
                         if respFriend["birthday"] == nil {
                             continue
                         }
-                        
-                        //print("Friend: \(respFriend)")
                         
                         let id = respFriend["id"] as! String
                         let name = respFriend["name"] as! String
@@ -363,20 +329,13 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
                         guard let friend = Friend(id: id, name: name, photoUrl: photo, nsBirthday: MyUtil.nsDateFormat(birthdayNSStr), birthday: birthdayStr, gender: gender) else {
                             fatalError("something happened to friend1")
                         }
-                        self.friends.append(friend)
+                        
+                        self.friends.insert(friend, at: oldFriendsCount)
+                        oldFriendsCount += 1
                         
                     }
                     
-                    if self.friends.count != oldFriendsCount {
-                        let newFriendsCount = self.friends.count - oldFriendsCount
-                        let tableV = self.tableView
-                        tableV?.beginUpdates()
-                        for i in 0 ..< newFriendsCount {
-                            tableV?.insertRows(at: [IndexPath(row: oldFriendsCount+i, section: 0)], with: .automatic)
-                        }
-                        tableV?.endUpdates()
-                    }
-                    
+                    self.tableView.reloadData()
                     self.loading = false
                     
                     self.preloadNextAd()
@@ -426,15 +385,22 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
             return
         }
         
-        let adInterval = (friends.count / nativeAds.count) + 1
-        var index = 0
-        for nativeAd in nativeAds {
-            if index < friends.count {
-                friends.insert(nativeAd, at: index)
-                index += adInterval
-            } else {
-                break
+        if (!self.loading) {
+            self.loading = true
+            let adInterval = (friends.count / nativeAds.count) + 1
+            var index = 0
+            for nativeAd in nativeAds {
+                if index < friends.count {
+                    if friends[index] is Friend {
+                        friends.insert(nativeAd, at: index)
+                    }
+                    index += adInterval
+                } else {
+                    break
+                }
             }
+            self.tableView.reloadData()
+            self.loading = false
         }
     }
     

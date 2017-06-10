@@ -150,8 +150,6 @@ class SettingsTableViewController: UITableViewController {
             self.loginLabel.text = NSLocalizedString("Login with Facebook", comment: "Settings Login with Facebook")
         }
     }
-    
-    
 
 }
 

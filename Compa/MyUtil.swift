@@ -60,8 +60,7 @@ class MyUtil {
             birthdayStr = dateArr[2]! + "-" + dateArr[0]! + "-" + dateArr[1]!
         }
         let birthdayNSStr = dateArr[2]! + "-" + dateArr[0]! + "-" + dateArr[1]!
-        //var nsDict = NSDictionary()
-        //nsDict["birthdayStr"] = birthdayStr
+        
         return ["birthdayStr": birthdayStr, "birthdayNSStr": birthdayNSStr]
     }
     
@@ -87,13 +86,12 @@ class MyUtil {
                 print(error)
             case .cancelled:
                 print("User cancelled login.")
-            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+            case .success( _, _, _):
                 print("Logged in!")
                 let connection = GraphRequestConnection()
                 connection.add(FBGetRequest(nil, ["fields": "id, name, birthday, picture, gender"])) { httpResponse, result in
                     switch result {
                     case .success(let response):
-                        //print("Graph Request Succeeded: \(response)")
                         
                         // Get Logged in User Data
                         let respProfile = response.rawResponse as! NSDictionary
@@ -112,14 +110,6 @@ class MyUtil {
                         
                         // Callback
                         callback()
-                        
-                        // Navigate
-                        /*
-                        if (friendsFlg) {
-                            MyUtil.checkLoginAndNavigateToFriends(vc)
-                        }
- */
-                        
                         
                     case .failed(let error):
                         print("Graph Request Failed: \(error)")
@@ -148,18 +138,6 @@ class CSVScanner {
     
     /*
     http://stackoverflow.com/questions/28802614/how-can-i-create-an-array-of-dictionary-from-a-txt-file-in-swift
-     
-    CSVScanner.runFunctionOnRowsFromFile(theColumnNames: ["year", "color", "country","food"], withFileName: "sample", withFunction: {
-    
-    (aRow:Dictionary<string, string="">) in
-    
-    myCSVContents.append(aRow)
-    
-    textYear += aRow["year"]! + " = " + aRow["color"]! + "\n" //just a text
-    textCountry += aRow["year"]! + " = " + aRow["country"]! + "\n";
-    print(textYear)
-    
-    })
  */
     
     class func debug(string:String){

@@ -23,18 +23,4 @@ struct MyProfile {
     
     private init() {}
     
-    /*
-    init?(id: String, name: String, photoUrl: String?, nsBirthday: NSDate?, birthday: String?) {
-        if name.isEmpty {
-            return nil
-        }
-        self.id = id
-        self.name = name
-        //self.photo = photo
-        self.photoUrl = photoUrl
-        self.nsBirthday = nsBirthday
-        self.birthday = birthday
-    }
- */
-    
 }

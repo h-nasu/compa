@@ -11,24 +11,16 @@ import FacebookCore
 import FacebookLogin
 
 class LoginViewController: UIViewController {
+    
+    let myLoginButton = UIButton(type: .custom)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
-
-        // Check Login Status
-        MyUtil.checkLoginAndNavigateToFriends(self)
         
-        // Make login button
-        /*
-        let loginButton = LoginButton(readPermissions: [ .publicProfile, .userFriends ])
-        loginButton.center = view.center
-        view.addSubview(loginButton)
-        */
         // Add a custom login button to your app
-        let myLoginButton = UIButton(type: .custom)
         myLoginButton.backgroundColor = UIColor.blue
         //myLoginButton.frame = CGRect(0, 0, 180, 40)
         myLoginButton.frame = CGRect(origin: CGPoint(x:0,y:0), size: CGSize(width: 180, height: 40))
@@ -42,14 +34,6 @@ class LoginViewController: UIViewController {
         // Add the button to the view
         view.addSubview(myLoginButton)
         
-    }
-    
-    
-    // Once the button is clicked, show the login dialog
-    func loginButtonClicked() {
-        MyUtil.fbLogin(self) { ()->() in
-            MyUtil.checkLoginAndNavigateToFriends(self)
-        };
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +56,13 @@ class LoginViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    // Once the button is clicked, show the login dialog
+    func loginButtonClicked() {
+        MyUtil.fbLogin(self) { ()->() in
+            MyUtil.checkLoginAndNavigateToFriends(self)
+        };
+    }
     
 
 }
