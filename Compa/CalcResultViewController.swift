@@ -86,6 +86,7 @@ class CalcResultViewController: UIViewController {
         } else {
             myBirthdayStr = MyUtil.stringDateFormat(myBirthday)
             friendBirthdayStr = MyUtil.stringDateFormat(friendBirthday)
+            
         }
         
         myBirthdayLabel.text = myBirthdayStr

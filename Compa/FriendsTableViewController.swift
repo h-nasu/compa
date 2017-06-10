@@ -79,8 +79,8 @@ class FriendsTableViewController: UITableViewController, UISearchResultsUpdating
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if friends.count == 0 {
-            self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender&limit=4")
-            //self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender")
+            //self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender&limit=4")
+            self.loadFriends("/me/friends?fields=id,name,birthday,picture,gender")
         }
         
     }
