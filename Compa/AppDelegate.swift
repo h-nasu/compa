@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         Zodiac.initData()
         
-        FIRApp.configure()
+        FirebaseApp.configure()
         GADMobileAds.configure(withApplicationID: "ca-app-pub-4710239858315320~6841663891")
         
         return true

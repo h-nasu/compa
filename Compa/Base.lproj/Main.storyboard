@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oaX-C4-vcF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="oaX-C4-vcF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -79,6 +79,14 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="85" id="f7f-ub-QL9" customClass="InviteTableViewCell" customModule="Compa" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="189" width="375" height="85"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="f7f-ub-QL9" id="nOh-77-GZq">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="85"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -96,6 +104,75 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bm4-gm-xna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1045.5999999999999" y="1694.3028485757122"/>
+        </scene>
+        <!--Select Language View Controller-->
+        <scene sceneID="ysy-4f-hog">
+            <objects>
+                <viewController modalPresentationStyle="overCurrentContext" id="ESp-h0-cci" customClass="SelectLanguageViewController" customModule="Compa" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Wdf-Yt-9eA"/>
+                        <viewControllerLayoutGuide type="bottom" id="Gzs-dY-cMx"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="dqQ-5r-JcF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="tqw-bC-Wvw">
+                                <rect key="frame" x="26" y="263.5" width="323" height="140"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9xg-2m-f5O">
+                                        <rect key="frame" x="1.5" y="0.0" width="320" height="100"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="Prj-nL-UVl"/>
+                                        </constraints>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hwl-WG-0xe" customClass="CalcCompabilityUIButton" customModule="Compa" customModuleProvider="target">
+                                        <rect key="frame" x="86.5" y="100" width="150" height="40"/>
+                                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="RO9-yn-B8a"/>
+                                            <constraint firstAttribute="height" constant="40" id="xTZ-2i-RfX"/>
+                                        </constraints>
+                                        <state key="normal" title="Set Language">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <integer key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="selectLanguage:" destination="ESp-h0-cci" eventType="touchUpInside" id="8HP-jQ-VzN"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.25342465753424659" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tqw-bC-Wvw" firstAttribute="centerY" secondItem="dqQ-5r-JcF" secondAttribute="centerY" id="Ocx-Qe-ELM"/>
+                            <constraint firstItem="tqw-bC-Wvw" firstAttribute="centerX" secondItem="dqQ-5r-JcF" secondAttribute="centerX" id="az9-0B-XIK"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="tqw-bC-Wvw" secondAttribute="trailing" constant="10" id="b9k-V0-OAF"/>
+                            <constraint firstItem="tqw-bC-Wvw" firstAttribute="leading" secondItem="dqQ-5r-JcF" secondAttribute="leadingMargin" constant="10" id="zc1-hM-Vrd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="languagePicker" destination="9xg-2m-f5O" id="Qug-YD-aHx"/>
+                        <outlet property="setButton" destination="hwl-WG-0xe" id="u6n-Vp-Ste"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Rd-wg-9V0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1936.8" y="1693.4032983508248"/>
         </scene>
         <!--Settings-->
         <scene sceneID="KTc-Bv-0Eo">

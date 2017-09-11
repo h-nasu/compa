@@ -10,6 +10,7 @@ import XCTest
 @testable import Compa
 import CoreData
 
+
 class CompaTests: XCTestCase {
     
     override func setUp() {
