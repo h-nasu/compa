@@ -1,5 +1,5 @@
 # Compa
-iOS App written in Swift to check the compability of two person by European and Chinese Zodiac signs.
+iOS App written in Swift to check the compatibility of two person by European and Chinese Zodiac signs.
 
 ## Home Screen
 <img src="https://raw.githubusercontent.com/h-nasu/compa/master/screen_shots/splash.png" width="250" align="left">
